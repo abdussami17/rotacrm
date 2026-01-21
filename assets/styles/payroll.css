@@ -1,0 +1,80 @@
+
+.payroll-invoice-container {
+    max-width: 100%;
+    margin: 40px auto;
+    margin-top: 0;
+    background-color: #ffffff;
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.payroll-invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.payroll-invoice-logo {
+    max-height: 70px;
+}
+.payroll-invoice-company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.payroll-invoice-company-details p {
+    margin-bottom: 2px;
+    color: #495057;
+}
+
+/* Section Titles */
+.payroll-invoice-section-title {
+    background-color: #f1f3f5;
+    padding: 10px 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    border-left: 5px solid #343a40;
+    border-radius: 4px 0 0 4px;
+    font-size: 1.05rem;
+}
+
+/* Tables */
+.payroll-invoice-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-top: none;
+}
+.payroll-invoice-table td, .payroll-invoice-table th {
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+.payroll-invoice-table tbody tr:last-child td {
+    font-weight: 600;
+    background-color: #f1f3f5;
+}
+
+/* Responsive */
+@media print {
+    .payroll-invoice-container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+}
+
+/* Footer */
+.payroll-invoice-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 40px;
+}
+
+/* Custom utilities */
+.payroll-invoice-bold {
+    font-weight: 600;
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SP CRM Dashboard - Employee management system for security personnel tracking">
+    <title>SP CRM</title>
+
+    <!-- Preconnect for external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <link href="https://unpkg.com/maplibre-gl@3.6.0/dist/maplibre-gl.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" sizes="32x32" href="assets/img/logo.webp">
+    <link rel="icon" type="image/webp" sizes="16x16" href="assets/img/logo.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo.webp">
+    <link rel="icon" type="image/webp" sizes="192x192" href="assets/img/logo.webp">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+
+<body>
+    <div class="dashboard_wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-container" id="sidebarContainer">
+            <div class="sidebar-logo-section">
+                <a href="dashboard.html" class="sidebar-brand" aria-label="Home">
+                    <img src="assets/img/website.png" alt="SP CRM Logo" width="60" height="60">
+                </a>
+            </div>
+        
+            <nav class="sidebar-menu-grid" aria-label="Main navigation">
+                <a href="dashboard.html" class="menu-grid-item active" data-menu="dashboard" aria-label="Dashboard" aria-current="page">
+                    <i data-lucide="layout-dashboard" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Dashboard</span>
+                </a>
+                <a href="scheduling.html" class="menu-grid-item" data-menu="clients" aria-label="Clients">
+                    <i data-lucide="calendar" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Scheduling</span>
+                </a>
+                <a href="sites.html" class="menu-grid-item" data-menu="sites" aria-label="Sites">
+                    <i data-lucide="building" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Sites</span>
+                </a>
+                <a href="staffs.html" class="menu-grid-item active-orange" data-menu="staffs" aria-label="Staffs">
+                    <i data-lucide="user-check" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Staffs</span>
+                </a>
+                <a href="subcontractors.html" class="menu-grid-item active" data-menu="subcontractors" aria-label="Subcontractors">
+                    <i data-lucide="briefcase" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Subcontractors</span>
+                </a>
+                <a href="invoices.html" class="menu-grid-item" data-menu="invoices" aria-label="Invoices">
+                    <i data-lucide="file-text" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Invoices</span>
+                </a>
+                <a href="payrolls.html" class="menu-grid-item" data-menu="payrolls" aria-label="Payrolls">
+                    <i data-lucide="credit-card" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Payrolls</span>
+                </a>
+                <a href="clients.html" class="menu-grid-item active-orange" data-menu="scheduling" aria-label="Scheduling">
+                    <i data-lucide="users" class="menu-item-icon" aria-hidden="true"></i>
+                    <span class="menu-item-label">Clients</span>
+                </a>
+            </nav>
+            
+       
+            
+            <!-- User Management Section -->
+            <section class="sidebar-section" aria-labelledby="user-management-heading">
+                <h3 id="user-management-heading" class="sidebar-section-title">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="user-management-items">
+                        <i class="fas fa-chevron-down section-chevron" id="user-management-chevron"></i>
+                        <span>User Management</span>
+                    </button>
+                </h3>
+                <div class="section-items" id="user-management-items" role="menu" aria-labelledby="user-management-heading">
+                    <a href="users.html" class="section-item" role="menuitem">
+                        <i data-lucide="users" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">All Users</span>
+                    </a>
+                    <a href="roles.html" class="section-item" role="menuitem">
+                        <i data-lucide="shield" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">All Roles</span>
+                    </a>
+                </div>
+            </section>
+        
+            <!-- Roster Section -->
+            <section class="sidebar-section" aria-labelledby="roster-heading">
+                <h3 id="roster-heading" class="sidebar-section-title">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="roster-items">
+                        <i class="fas fa-chevron-down section-chevron" id="roster-chevron"></i>
+                        <span>Roster</span>
+                    </button>
+                </h3>
+                <div class="section-items" id="roster-items" role="menu" aria-labelledby="roster-heading">
+                    <a href="scheduling.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar-clock" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Scheduling</span>
+                    </a>
+                    <a href="worker-calendar.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar-plus" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Worker Calendar</span>
+                    </a>
+                    <a href="site-calendar.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar-range" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Site Calendar</span>
+                    </a>
+                    <a href="manage-shifts.html" class="section-item" role="menuitem">
+                        <i data-lucide="clipboard-list" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Manage Shifts</span>
+                    </a>
+                    <a href="todays-rota.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar-check" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Today's Rota</span>
+                    </a>
+                </div>
+            </section>
+        
+            <!-- HR Management Section -->
+            <section class="sidebar-section" aria-labelledby="hr-management-heading">
+                <h3 id="hr-management-heading" class="sidebar-section-title">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="hr-management-items">
+                        <i class="fas fa-chevron-down section-chevron" id="hr-management-chevron"></i>
+                        <span>HR Management</span>
+                    </button>
+                </h3>
+                <div class="section-items" id="hr-management-items" role="menu" aria-labelledby="hr-management-heading">
+                    <a href="hr.html" class="section-item" role="menuitem">
+                        <i data-lucide="users" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">HR</span>
+                    </a>
+                    <a href="leaves.html" class="section-item" role="menuitem">
+                        <i data-lucide="umbrella" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Leaves</span>
+                    </a>
+                    <a href="new-leave-requests.html" class="section-item" role="menuitem">
+                        <i data-lucide="inbox" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">New Leave Requests</span>
+                    </a>
+                    <a href="holidays-calendar.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar-heart" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Holidays Calendar</span>
+                    </a>
+                    <a href="general-setting.html" class="section-item" role="menuitem">
+                        <i data-lucide="settings" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">General Setting</span>
+                    </a>
+                    <a href="pages.html" class="section-item" role="menuitem">
+                        <i data-lucide="file" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Pages</span>
+                    </a>
+                    <a href="digital-form.html" class="section-item" role="menuitem">
+                        <i data-lucide="clipboard-edit" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Digital Form</span>
+                    </a>
+                    <a href="form-list.html" class="section-item" role="menuitem">
+                        <i data-lucide="list-checks" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Form List</span>
+                    </a>
+                    <a href="application-form.html" class="section-item" role="menuitem">
+                        <i data-lucide="clipboard-check" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Application Form</span>
+                    </a>
+                    <a href="incident-data.html" class="section-item" role="menuitem">
+                        <i data-lucide="alert-triangle" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Incident Data</span>
+                    </a>
+                </div>
+            </section>
+        
+            <!-- Reports Section -->
+            <section class="sidebar-section" aria-labelledby="reports-heading">
+                <h3 id="reports-heading" class="sidebar-section-title">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="reports-items">
+                        <i class="fas fa-chevron-down section-chevron" id="reports-chevron"></i>
+                        <span>Reports</span>
+                    </button>
+                </h3>
+                <div class="section-items" id="reports-items" role="menu" aria-labelledby="reports-heading">
+                    <a href="document-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="file-text" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Document Report</span>
+                    </a>
+                    <a href="incident-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="alert-triangle" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Incident Report</span>
+                    </a>
+                    <a href="dob-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="calendar" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Dob Report</span>
+                    </a>
+                    <a href="employment-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="briefcase" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Employment Report</span>
+                    </a>
+                    <a href="staff-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="user-cog" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Staff Report</span>
+                    </a>
+                    <a href="shift-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="clock" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Shift Report</span>
+                    </a>
+                    <a href="book-on-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="book-open" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Book On Report</span>
+                    </a>
+                    <a href="client-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="users" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Client Report</span>
+                    </a>
+                    <a href="checkpoint-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="check-square" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Check Point Report</span>
+                    </a>
+                    <a href="performance-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="trending-up" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Performance Report</span>
+                    </a>
+                    <a href="salary-report.html" class="section-item" role="menuitem">
+                        <i data-lucide="dollar-sign" class="section-item-icon" aria-hidden="true"></i>
+                        <span class="menu-item-label">Salary Report</span>
+                    </a>
+                </div>
+            </section>
+            <section class="sidebar-section" aria-labelledby="favorites-heading">
+                <h3 id="favorites-heading" class="sidebar-section-title">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="favorites-items">
+                        <i class="fas fa-chevron-down section-chevron" id="favorites-chevron"></i>
+                        <span>Extra</span>
+                    </button>
+                </h3>
+                <div class="section-items" id="favorites-items" role="menu" aria-labelledby="favorites-heading">
+                    <a href="vehicle-management.html" class="section-item" role="menuitem">
+                        <div class="favorite-indicator-dot" aria-hidden="true"></div>
+                        <span class="menu-item-label">Vehicle Management</span>
+                    </a>
+                    <a href="restrictions.html" class="section-item" role="menuitem">
+                        <div class="favorite-indicator-dot" aria-hidden="true"></div>
+                        <span class="menu-item-label">Restrictions</span>
+                    </a>
+                    <a href="my-chats.html" class="section-item" role="menuitem">
+                        <div class="favorite-indicator-dot" aria-hidden="true"></div>
+                        <span class="menu-item-label">My Chats</span>
+                    </a>
+                    <a href="edit-logs.html" class="section-item" role="menuitem">
+                        <div class="favorite-indicator-dot" aria-hidden="true"></div>
+                        <span class="menu-item-label">Edit Logs</span>
+                    </a>
+                    <a href="logout.html" class="section-item" role="menuitem">
+                        <div class="favorite-indicator-dot" aria-hidden="true"></div>
+                        <span class="menu-item-label">Logout</span>
+                    </a>
+                </div>
+            </section>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Top Header -->
+             <!-- Top Header -->
+             <header class="top-header">
+                <div class="header-left">
+                    <button class="icon-button menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"
+                        id="menuToggle">
+                        <i data-lucide="menu" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="search-wrapper">
+                        <i data-lucide="search" class="search-icon" aria-hidden="true"></i>
+                        <input type="search" class="search-input" placeholder="Search here"
+                            aria-label="Search dashboard" id="searchInput">
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="icon-button" aria-label="Calendar">
+                        <i data-lucide="calendar" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="icon-button" onclick="toggleTheme()" aria-label="Toggle theme" id="themeToggle">
+                        <i data-lucide="moon" id="themeIcon" aria-hidden="true"></i>
+                    </button>
+
+                    <!-- Notifications Dropdown -->
+                    <div class="dropdown">
+                        <button class="icon-button position-relative" id="notificationDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
+                            <i data-lucide="bell" aria-hidden="true"></i>
+                            <span
+                                class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill px-1">
+                                +1
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow p-0" aria-labelledby="notificationDropdown">
+                            <li class="dropdown-header d-flex justify-content-between align-items-center px-3 py-2">
+                                <span class="fw-semibold">Notifications</span>
+                                <button class="btn btn-sm btn-link text-decoration-none text-danger fw-semibold">
+                                    Mark all as read
+                                </button>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider m-0">
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="#">
+                                    <div class="small fw-semibold">New message received</div>
+                                    <div class="text-muted small">2 minutes ago</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="#">
+                                    <div class="small fw-semibold">Server backup completed</div>
+                                    <div class="text-muted small">1 hour ago</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="#">
+                                    <div class="small fw-semibold">New comment on post</div>
+                                    <div class="text-muted small">Yesterday</div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider m-0">
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-center fw-semibold py-2" href="#">
+                                    View all notifications
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="user-card">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                alt="User avatar of Courtney Henry" width="30" height="30">
+                            <span class="status-dot" aria-label="Online status"></span>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Courtney Henry</div>
+                            <div class="user-status">Online</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page_content">
+                <div class="table_filters_area">
+                    <div class="d-flex justify-content-normal align-items-center gap-1">
+
+                        <div class="search_bar">
+                            <i data-lucide="search"></i>
+                            <input type="text" class="table-search" placeholder="Search">
+                        </div>
+                        <button class="button danger"><i data-lucide="trash-2"></i><span>Delete Selected</span> </button>
+                    </div>
+                    <div class="d-flex justify-content-normal align-items-center gap-1">
+                        <div class="dropdown">
+                            <button class="button light dropdown-toggle d-flex align-items-center" type="button"
+                                id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i data-lucide="printer"></i>
+                                <span class="me-2">Export</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                <li>
+                                    <a class="dropdown-item " href="#" onclick="exportExcel()">
+                                        Export as Excel
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item " href="#" onclick="exportPDF()">
+                                        Export as PDF
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                       
+
+
+
+                        
+                    </div>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="sortable-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="form-check-input select-all"></th>
+                                <th>Action</th>
+                                <th data-sort="string">Site Name</th>
+                                <th data-sort="string">Officer Name</th>
+                                <th data-sort="string">SIA Badge No</th>
+                                <th>Date of Check</th>
+                                <th>Time</th>
+                                <th>Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                            <!-- Row 1 -->
+                            <tr>
+                                <td><input type="checkbox" class="form-check-input row-checkbox"></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="action_dots_icon dropdown-toggle"
+                                           data-lucide="more-vertical"
+                                           data-bs-toggle="dropdown"
+                                           aria-expanded="false"
+                                           style="cursor:pointer;"></i>
+                                        <ul class="dropdown-menu dropdown-menu-end" data-bs-display="static">
+                
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#viewFormModal">
+                                                    View
+                                                </a>
+                                            </li>
+                
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#editFormModal">
+                                                    Edit
+                                                </a>
+                                            </li>
+                
+                                            <li>
+                                                <a class="dropdown-item text-danger"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#deleteConfirmModal">
+                                                    Delete
+                                                </a>
+                                            </li>
+                
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>Canary Wharf Site</td>
+                                <td>John Smith</td>
+                                <td>12345678</td>
+                                <td>12/01/2026</td>
+                                <td>09:30 AM</td>
+                                <td>12/01/2026 09:45 AM</td>
+                            </tr>
+                
+                            <!-- Row 2 -->
+                            <tr>
+                                <td><input type="checkbox" class="form-check-input row-checkbox"></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="action_dots_icon dropdown-toggle"
+                                           data-lucide="more-vertical"
+                                           data-bs-toggle="dropdown"
+                                           aria-expanded="false"
+                                           style="cursor:pointer;"></i>
+                                        <ul class="dropdown-menu dropdown-menu-end" data-bs-display="static">
+                
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#viewFormModal">
+                                                    View
+                                                </a>
+                                            </li>
+                
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#editFormModal">
+                                                    Edit
+                                                </a>
+                                            </li>
+                
+                                            <li>
+                                                <a class="dropdown-item text-danger"
+                                                   href="#"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#deleteConfirmModal">
+                                                    Delete
+                                                </a>
+                                            </li>
+                
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>Oxford Street Mall</td>
+                                <td>Michael Brown</td>
+                                <td>87654321</td>
+                                <td>11/01/2026</td>
+                                <td>07:15 PM</td>
+                                <td>11/01/2026 07:40 PM</td>
+                            </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                
+
+            </div>
+
+
+        </main>
+    </div>
+<!-- Modals -->
+
+
+
+
+
+
+
+<!-- Delete Client Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content delete-modal">
+            <div class="modal-body text-center">
+                <div class="delete-icon">
+                    <i data-lucide="trash-2"></i>
+                </div>
+                <h5 class="mt-3">Delete Record</h5>
+                <p class="text-muted">
+                    This action cannot be undone. Are you sure you want to continue?
+                </p>
+                <div class="d-flex justify-content-center gap-1 mt-4">
+                    <button class="button light" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#successModal" class="button primary" id="confirmDeleteBtn">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Sucess Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content success-modal">
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i data-lucide="check-circle"></i>
+                </div>
+                <h5 class="mt-3">Success</h5>
+                <p class="text-muted">
+                    The action has been completed successfully.
+                </p>
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="button primary" data-bs-dismiss="modal">
+                        Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="assets/scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="assets/scripts/table.js"></script>
+   
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+
+
+</body>
+
+</html>

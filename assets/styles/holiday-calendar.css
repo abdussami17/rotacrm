@@ -1,0 +1,263 @@
+
+
+/* body {
+    background: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    padding: 24px;
+} */
+
+.holidayCalendarMainContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.holidayCalendarHeaderSection {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 32px 20px;
+}
+
+.holidayCalendarMainTitle {
+    color: #0f172a;
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.holidayCalendarMainTitleIcon {
+    color: #dc2626;
+}
+
+.holidayCalendarSubtitleText {
+    color: #64748b;
+    font-size: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.holidayCalendarControlsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.holidayCalendarNavigationButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.holidayCalendarButton {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.holidayCalendarButton:hover {
+    background-color: #2563eb;
+}
+
+.holidayCalendarTodayButton {
+    background-color: #059669;
+}
+
+.holidayCalendarTodayButton:hover {
+    background-color: #047857;
+}
+
+.holidayCalendarCurrentDateDisplay {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #0f172a;
+    text-align: center;
+    flex-grow: 1;
+    margin: 12px 0;
+}
+
+.holidayCalendarViewControls {
+    display: flex;
+    gap: 12px;
+}
+
+.holidayCalendarViewButton {
+    background-color: #7c3aed;
+}
+
+.holidayCalendarViewButton:hover {
+    background-color: #6d28d9;
+}
+
+.holidayCalendarWrapper {
+    background-color: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.5rem;
+    color: #0f172a;
+}
+
+.fc .fc-button {
+    background-color: #3b82f6;
+    border: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.fc .fc-button:hover {
+    background-color: #2563eb;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #1e293b;
+}
+
+.holidayCalendarEventMarker {
+    background-color: var(--theme-color) !important;
+    border-color: var(--theme-color) !important;
+    color: white !important;
+    font-weight: 500;
+    border-radius: 6px !important;
+}
+
+.holidayCalendarLegendContainer {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    flex-wrap: wrap;
+}
+
+.holidayCalendarLegendItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.holidayCalendarLegendColorBox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.holidayCalendarLegendHoliday {
+    background-color: var(--theme-color);
+}
+
+.holidayCalendarLegendToday {
+    background-color: #f59e0b;
+}
+
+.holidayCalendarLoadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.holidayCalendarLoadingSpinner {
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: holidayCalendarSpin 1s linear infinite;
+}
+
+@keyframes holidayCalendarSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.holidayCalendarErrorAlert {
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.holidayCalendarErrorAlertIcon {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .holidayCalendarControlsWrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px;
+    }
+
+    .holidayCalendarNavigationButtons,
+    .holidayCalendarViewControls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .holidayCalendarCurrentDateDisplay {
+        order: -1;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .holidayCalendarMainTitle {
+        font-size: 2.25rem;
+    }
+
+    .holidayCalendarButton {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .holidayCalendarCurrentDateDisplay {
+        font-size: 1.5rem;
+    }
+
+
+}
+
+.fc-col-header-cell{
+    background-color: #fff;
+    
+}
+.fc .fc-col-header-cell-cushion {
+    text-decoration: none;
+    color: #000;
+}
