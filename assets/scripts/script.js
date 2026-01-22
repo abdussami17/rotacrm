@@ -546,14 +546,14 @@ document.addEventListener('DOMContentLoaded', function () {
     flatpickr('.fp-time', {
         enableTime: true,
         noCalendar: true,
-        dateFormat: 'H:i',
+        dateFormat: 'H:i',  
         time_24hr: true
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     flatpickr('.flatpickr', {
-        dateFormat: 'Y-m-d'
+        dateFormat: 'd/m/Y'
     });
 
     document.querySelectorAll('.dropdown-toggle').forEach(function (el) {

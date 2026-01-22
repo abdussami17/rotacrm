@@ -59,5 +59,16 @@
     
             flatpickr(clone.querySelectorAll(".fp-time"));
         });
+
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("remove-shift")) {
+                const wrapper = document.querySelector(".shift-wrapper");
+                const groups = wrapper.querySelectorAll(".shift-group");
+        
+                if (groups.length > 1) {
+                    e.target.closest(".shift-group").remove();
+                }
+            }
+        });
     
     });
