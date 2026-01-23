@@ -1,69 +1,104 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    const rotaEvents = [
-        { title: 'Pending - Site A', start: '2026-01-14', color: '#FFC107' },
-        { title: 'Accepted - Site B', start: '2026-01-14', color: '#28A745' },
-        { title: 'Started - Site C', start: '2026-01-20', color: '#17A2B8' },
-        { title: 'Rejected - Site D', start: '2026-01-25', color: '#DC3545' }
+    /* ================================
+       STAFF EVENTS
+    ================================= */
+    const staffEvents = [
+        {
+            title: 'John Smith',
+            extendedProps: { site: 'Site A', status: 'Pending' },
+            start: '2026-01-14T08:00:00',
+            end: '2026-01-14T18:00:00',
+            classNames: ['shift-pending']
+        },
+        {
+            title: 'Mike Brown',
+            extendedProps: { site: 'Site B', status: 'Accepted' },
+            start: '2026-01-16T09:00:00',
+            end: '2026-01-16T17:00:00',
+            classNames: ['shift-accepted']
+        },
+        {
+            title: 'Anna Patel',
+            extendedProps: { site: 'Site C', status: 'Started' },
+            start: '2026-01-20T10:00:00',
+            end: '2026-01-20T20:00:00',
+            classNames: ['shift-started']
+        }
     ];
 
-    /* -------- SMALL CALENDAR -------- */
-    const smallCal = new FullCalendar.Calendar(
-        document.getElementById('rotaSmallCalendar'),
-        {
-            initialView: 'dayGridMonth',
-            headerToolbar: false,
-            height: 'auto',
-            events: rotaEvents,
+    /* ================================
+       ELEMENTS
+    ================================= */
+    const calendarEl = document.getElementById('siteMainCalendar');
+    const loaderEl = document.getElementById('siteCalendarLoader');
 
-            dateClick: function (info) {
-                mainCal.gotoDate(info.dateStr);
-                updateHeader(info.dateStr);
+    if (!calendarEl || !loaderEl) return;
+
+    /* force initial state */
+    calendarEl.classList.add('calendar-hidden');
+    loaderEl.style.display = 'flex';
+
+    /* ================================
+       CALENDAR INIT
+    ================================= */
+    const staffCalendar = new FullCalendar.Calendar(calendarEl, {
+
+        initialView: 'dayGridMonth',
+        height: 720,
+
+        headerToolbar: {
+            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+            center: 'title',
+            left: 'today prev,next'
+        },
+
+        displayEventTime: false,
+        dayMaxEvents: 2,
+        eventDisplay: 'block',
+
+        slotMinTime: "06:00:00",
+        slotMaxTime: "22:00:00",
+
+        events: staffEvents,
+
+        eventContent: function (arg) {
+
+            const name = arg.event.title;
+            const site = arg.event.extendedProps.site || '';
+
+            const maxLen = 26;
+            let text = name + ' - ' + site;
+
+            if (text.length > maxLen) {
+                text = text.substring(0, maxLen).trim() + '…';
+            }
+
+            return {
+                html: `<div class="shift-event-text" title="${name} — ${site}">${text}</div>`
+            };
+        },
+
+        eventClick: function (info) {
+            info.jsEvent.preventDefault();
+            console.log('STAFF SHIFT:', info.event.title, info.event.extendedProps);
+        },
+
+        /* ================================
+           CORRECT LOADER CONTROL
+        ================================= */
+        loading: function (isLoading) {
+            if (isLoading) {
+                loaderEl.style.display = 'flex';
+                calendarEl.classList.add('calendar-hidden');
+            } else {
+                loaderEl.style.display = 'none';
+                calendarEl.classList.remove('calendar-hidden');
+                calendarEl.classList.add('calendar-visible');
             }
         }
-    );
-    smallCal.render();
-
-
-    /* -------- MAIN CALENDAR -------- */
-    const mainCal = new FullCalendar.Calendar(
-        document.getElementById('rotaMainCalendar'),
-        {
-            initialView: 'dayGridMonth',
-            height: 650,
-            events: rotaEvents,
-
-            headerToolbar: {
-                left: 'dayGridMonth,timeGridWeek,timeGridDay',
-                center: '',
-                right: ''
-            },
-
-            datesSet: function (info) {
-                updateHeader(info.start);
-            }
-        }
-    );
-    mainCal.render();
-
-
-    /* -------- HEADER TITLE -------- */
-    function updateHeader(date) {
-        const d = new Date(date);
-        document.getElementById('rotaCalendarTitle').innerText =
-            d.toLocaleString('default', { month: 'long', year: 'numeric' });
-    }
-
-
-    /* -------- NAV BUTTONS -------- */
-    document.getElementById('rotaPrevBtn').addEventListener('click', function () {
-        smallCal.prev();
-        mainCal.prev();
     });
 
-    document.getElementById('rotaNextBtn').addEventListener('click', function () {
-        smallCal.next();
-        mainCal.next();
-    });
+    staffCalendar.render();
 
 });

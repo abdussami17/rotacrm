@@ -372,7 +372,7 @@
                 <!-- Top Tabs + Status -->
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                     <div class="d-flex gap-2 flex-wrap">
-                        <a href="complete-rota.html" class="button text-decoration-none light">Complete Rota</a>
+                        <a href="scheduling.html" class="button text-decoration-none light">Complete Rota</a>
                         <a href="security-staff-calendar.html" class="button text-decoration-none primary">Security Staff Calendar</a>
                         <a href="site-calendar.html" class="button text-decoration-none light">Site Calendar</a>
                         <a href="todays-rota.html" class="button text-decoration-none light">Today's Rota</a>
@@ -385,10 +385,12 @@
             
                 <!-- Actions: Refresh, Search, Export -->
                 <div class="table_filters_area   d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-                    <button class="button light"><i data-lucide="refresh-cw"></i> Refresh</button>
+                    <div class="d-flex gap-1 flex-wrap">
+                        <button class="button light"><i data-lucide="refresh-cw"></i> Refresh</button>
                     <div class="search_bar d-flex align-items-center flex-grow-1 flex-md-grow-0">
                         <i data-lucide="search" class="me-1"></i>
                         <input type="text" class="form-control table-search" placeholder="Search rota...">
+                    </div>
                     </div>
                     <div class="dropdown">
                         <button class="button light dropdown-toggle d-flex align-items-center" type="button"
@@ -410,53 +412,50 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row g-3">
+                <div class="row ">
 
-                    <!-- Left Column: Small Calendar + Event Legend -->
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card mb-3">
-                            <div class="card-header"><h6 class="mb-0">Month</h6></div>
-                            <div class="card-body">
-                                <div id="staffSmallCalendar"></div>
-                            </div>
-                        </div>
-                
+                    <!-- Full Width Calendar -->
+                    <div class="col-12">
                         <div class="card">
-                            <div class="card-header"><h6 class="mb-0">Event By Color</h6></div>
+                           
+                
                             <div class="card-body">
-                                <ul class="list-unstyled mb-0">
-                                    <li><span class="badge bg-warning me-1">&nbsp;</span> Pending</li>
-                                    <li><span class="badge bg-primary me-1">&nbsp;</span> Dispatched</li>
-                                    <li><span class="badge bg-success me-1">&nbsp;</span> Accepted</li>
-                                    <li><span class="badge bg-info me-1">&nbsp;</span> Started</li>
-                                    <li><span class="badge bg-dark me-1">&nbsp;</span> Ended</li>
-                                    <li><span class="badge bg-danger me-1">&nbsp;</span> Rejected</li>
-                                </ul>
+                                <div class="position-relative">
+
+                                    <div id="staffCalendarLoader" class="calendar-loader">
+                                        <div class="spinner"></div>
+                                        <div class="loader-text">Loading calendar...</div>
+                                    </div>
+                                
+                                    <div id="staffMainCalendar" class="calendar-hidden"></div>
+                                
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                 
-                    <!-- Right Column: Main Calendar -->
-                    <div class="col-lg-8 col-md-8">
+                    <!-- Event Color Legend Row -->
+                    <div class="col-12 mt-2">
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h6 class="mb-0" id="staffCalendarTitle">January 2026</h6>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-light" id="staffPrevBtn">
-                                        <i data-lucide="chevron-left"></i>
-                                    </button>
-                                    <button class="btn btn-light" id="staffNextBtn">
-                                        <i data-lucide="chevron-right"></i>
-                                    </button>
+                            <div class="card-body py-0">
+                                <div class="justify-content-center d-flex flex-wrap gap-3">
+                                    <span class="status-item"><span class="badge bg-warning me-1"></span> Pending</span>
+                                    <span class="status-item"><span class="badge bg-primary me-1"></span> Dispatched</span>
+                                    <span class="status-item"><span class="badge bg-success me-1"></span> Accepted</span>
+                                    <span class="status-item"><span class="badge bg-info me-1"></span> Started</span>
+                                    <span class="status-item"><span class="badge bg-dark me-1"></span> Ended</span>
+                                    <span class="status-item"><span class="badge bg-danger me-1"></span> Rejected</span>
+                                    <span class="status-item"><span class="badge bg-secondary me-1"></span> Cancelled</span>
+                                    <span class="status-item"><span class="badge bg-purple me-1"></span> Pre-Start</span>
+                                    <span class="status-item"><span class="badge bg-teal me-1"></span> Await-Finish</span>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="staffMainCalendar"></div>
                             </div>
                         </div>
                     </div>
                 
                 </div>
+                
                 
                 
             </div>

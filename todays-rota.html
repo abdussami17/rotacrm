@@ -372,7 +372,7 @@
                 <!-- Top Tabs + Status -->
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                     <div class="d-flex gap-2 flex-wrap">
-                        <a href="complete-rota.html" class="button text-decoration-none light">Complete Rota</a>
+                        <a href="scheduling.html" class="button text-decoration-none light">Complete Rota</a>
                         <a href="security-staff-calendar.html" class="button text-decoration-none light">Security Staff Calendar</a>
                         <a href="site-calendar.html" class="button text-decoration-none light">Site Calendar</a>
                         <a href="todays-rota.html" class="button text-decoration-none primary">Today's Rota</a>
@@ -385,10 +385,12 @@
             
                 <!-- Actions: Refresh, Search, Export -->
                 <div class="table_filters_area   d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-                    <button class="button light"><i data-lucide="refresh-cw"></i> Refresh</button>
+                    <div class="d-flex gap-1 flex-wrap">
+                        <button class="button light"><i data-lucide="refresh-cw"></i> Refresh</button>
                     <div class="search_bar d-flex align-items-center flex-grow-1 flex-md-grow-0">
                         <i data-lucide="search" class="me-1"></i>
                         <input type="text" class="form-control table-search" placeholder="Search rota...">
+                    </div>
                     </div>
                     <div class="dropdown">
                         <button class="button light dropdown-toggle d-flex align-items-center" type="button"
@@ -412,19 +414,37 @@
                 </div>
             
                 <div class="row g-3">
-            
-                    <!-- Left Column: Small Calendar + Event Legend -->
+
+                    <!-- LEFT: SMALL MONTH CALENDAR + LEGEND -->
                     <div class="col-lg-4 col-md-4">
+                
+                        <!-- SMALL CALENDAR -->
                         <div class="card mb-3">
-                            <div class="card-header"><h6 class="mb-0">Month</h6></div>
-                            <div class="card-body">
-                                <div id="smallCalendar"></div>
+                            <div class="card-header">
+                                <h6 class="mb-0">Month</h6>
+                            </div>
+                
+                            <div class="card-body position-relative">
+                
+                                <!-- LOADER -->
+                                <div id="smallCalLoader" class="calendar-loader">
+                                    <div class="spinner"></div>
+                                    <div class="loader-text">Loading...</div>
+                                </div>
+                
+                                <!-- CALENDAR -->
+                                <div id="smallCalendar" class="calendar-hidden"></div>
+                
                             </div>
                         </div>
+                
+                        <!-- LEGEND -->
                         <div class="card">
-                            <div class="card-header"><h6 class="mb-0">Event By Color</h6></div>
+                            <div class="card-header">
+                                <h6 class="mb-0">Event By Color</h6>
+                            </div>
                             <div class="card-body">
-                                <ul class="list-unstyled mb-0">
+                                <ul class="list-unstyled mb-0 d-flex flex-column gap-1 ">
                                     <li><span class="badge bg-warning me-1">&nbsp;</span> Pending</li>
                                     <li><span class="badge bg-primary me-1">&nbsp;</span> Dispatched</li>
                                     <li><span class="badge bg-success me-1">&nbsp;</span> Accepted</li>
@@ -434,25 +454,43 @@
                                 </ul>
                             </div>
                         </div>
+                
                     </div>
-            
-                    <!-- Center Column: Main Day Calendar -->
+                
+                    <!-- RIGHT: MAIN DAY CALENDAR -->
                     <div class="col-lg-8 col-md-8">
+                
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h6 class="mb-0" id="mainCalendarDate">January 14, 2026</h6>
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-light" id="prevMonth"><i data-lucide="chevron-left"></i></button>
-                                    <button class="btn btn-light" id="nextMonth"><i data-lucide="chevron-right"></i></button>
+                                    <button class="btn btn-light" id="prevMonth">
+                                        <i data-lucide="chevron-left"></i>
+                                    </button>
+                                    <button class="btn btn-light" id="nextMonth">
+                                        <i data-lucide="chevron-right"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div id="mainCalendar"></div>
+                
+                            <div class="card-body position-relative">
+                
+                                <!-- LOADER -->
+                                <div id="mainCalLoader" class="calendar-loader">
+                                    <div class="spinner"></div>
+                                    <div class="loader-text">Loading...</div>
+                                </div>
+                
+                                <!-- CALENDAR -->
+                                <div id="mainCalendar" class="calendar-hidden"></div>
+                
                             </div>
                         </div>
+                
                     </div>
-            
+                
                 </div>
+                
             </div>
             
             
