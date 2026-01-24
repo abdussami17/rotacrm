@@ -540,7 +540,7 @@
 
 <!-- edit Site modal -->
 <div class="modal fade" id="editSiteModal" tabindex="-1" aria-labelledby="editSiteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -553,42 +553,43 @@
 
                     <h6 class="section-title">Basic Information</h6>
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Client Name <span class="text-danger">*</span></label>
                             <select class="tomselect" required>
-                                <option>ABC Corporation</option>
-                                <option selected>Global Tech Ltd</option>
+                                <option value="">Select Client</option>
+                                <option selected>ABC Corporation</option>
+                                <option>Global Tech Ltd</option>
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Site Name <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" value="Chicago Office" required>
+                            <input type="text" class="form-control" value="London Central Site" required>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Post Code</label>
-                            <input type="text" class="form-control" value="60601">
+                            <input type="text" class="form-control" value="SW1A 1AA">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Site Code</label>
-                            <input type="text" class="form-control" value="CH-OF-014">
+                            <input type="text" class="form-control" value="LDN-001">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Person</label>
-                            <input type="text" class="form-control" value="Emily Johnson">
+                            <input type="text" class="form-control" value="Mark Thompson">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" value="+1 555-987-6543">
+                            <input type="text" class="form-control" value="+44 7700 900123">
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <label class="form-label">Site Note</label>
-                            <textarea class="form-control" rows="2">Main office security site</textarea>
+                            <textarea class="form-control" rows="2">Main entrance security point. Night patrol required.</textarea>
                         </div>
                     </div>
 
@@ -599,6 +600,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Manager</label>
                             <select class="tomselect">
+                                <option value="">Select Manager</option>
                                 <option selected>Manager 1</option>
                                 <option>Manager 2</option>
                             </select>
@@ -607,13 +609,14 @@
                         <div class="col-md-6">
                             <label class="form-label">Manager (2)</label>
                             <select class="tomselect">
-                                <option>Manager A</option>
-                                <option selected>Manager B</option>
+                                <option value="">Select Manager</option>
+                                <option selected>Manager A</option>
+                                <option>Manager B</option>
                             </select>
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-check mt-4">
+                            <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="editEnableQr" checked>
                                 <label class="form-check-label" for="editEnableQr">Enable QR Code</label>
                             </div>
@@ -628,16 +631,17 @@
                             <label class="form-label">Start Time</label>
                             <input type="text" class="form-control fp-time" value="08:00">
                         </div>
-
+                        
                         <div class="col-md-4">
                             <label class="form-label">End Time</label>
                             <input type="text" class="form-control fp-time" value="18:00">
                         </div>
-
+                        
                         <div class="col-md-4">
                             <label class="form-label">Break Time</label>
                             <select class="form-select">
                                 <option>No break</option>
+                                <option>15 mins</option>
                                 <option selected>30 mins</option>
                                 <option>45 mins</option>
                                 <option>1 hour</option>
@@ -655,30 +659,31 @@
                     <div class="row g-3">
                         <div class="col-md-3">
                             <label class="form-label">Guard Rate</label>
-                            <input type="number" step="0.01" class="form-control" value="18.50">
+                            <input type="number" step="0.01" class="form-control" value="12.50">
                         </div>
 
                         <div class="col-md-3">
                             <label class="form-label">Office Rate</label>
-                            <input type="number" step="0.01" class="form-control" value="22.00">
+                            <input type="number" step="0.01" class="form-control" value="4.00">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Expenses</label>
+                            <input type="text" class="form-control" value="Billable">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Expenses</label>
+                            <input type="text" class="form-control" value="Payable">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">
                                 Name of the Guards
-                                <small class="text-muted">(Include additional info such as Trained Guards, Banned Guards)</small>
+                                <i data-lucide="info" data-bs-toggle="tooltip"
+                                   data-bs-title="(Include additional info such as Trained Guards, Banned Guards)"></i>
                             </label>
-                            <textarea class="form-control" rows="2">Trained guards only</textarea>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Expenses</label>
-                            <input type="text" class="form-control" value="Billable">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Expenses</label>
-                            <input type="text" class="form-control" value="Payable">
+                            <textarea class="form-control" rows="2">Trained guards only. No temporary staff.</textarea>
                         </div>
                     </div>
 
@@ -688,7 +693,7 @@
                     <table class="table table-bordered align-middle">
                         <thead>
                             <tr>
-                                <th><input class="form-check-input" type="checkbox"></th>
+                                <th><input class="form-check-input" type="checkbox" checked></th>
                                 <th>Name</th>
                                 <th>Guard Rate</th>
                                 <th>Office Rate</th>
@@ -698,8 +703,8 @@
                             <tr>
                                 <td><input type="checkbox" class="form-check-input" checked></td>
                                 <td>Alarm Response</td>
-                                <td><input type="number" class="form-control" value="20"></td>
-                                <td><input type="number" class="form-control" value="25"></td>
+                                <td><input type="number" class="form-control" value="15"></td>
+                                <td><input type="number" class="form-control" value="5"></td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="form-check-input"></td>
@@ -709,27 +714,9 @@
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="form-check-input" checked></td>
-                                <td>Event Staff</td>
-                                <td><input type="number" class="form-control" value="19"></td>
-                                <td><input type="number" class="form-control" value="23"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input"></td>
-                                <td>Keyholding</td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input"></td>
-                                <td>Mobile Petrol</td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input" checked></td>
                                 <td>Static Guards</td>
-                                <td><input type="number" class="form-control" value="18"></td>
-                                <td><input type="number" class="form-control" value="22"></td>
+                                <td><input type="number" class="form-control" value="12"></td>
+                                <td><input type="number" class="form-control" value="4"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -746,9 +733,10 @@
     </div>
 </div>
 
+
 <!-- Add Site Modal -->
 <div class="modal fade" id="addSiteModal" tabindex="-1" aria-labelledby="addSiteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -761,7 +749,7 @@
 
                     <h6 class="section-title">Basic Information</h6>
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Client Name <span class="text-danger">*</span></label>
                             <select class="tomselect" required>
                                 <option value="">Select Client</option>
@@ -770,32 +758,32 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Site Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Enter site name" required>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Post Code</label>
                             <input type="text" class="form-control" placeholder="Enter post code">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Site Code</label>
                             <input type="text" class="form-control" placeholder="Enter site code">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Person</label>
                             <input type="text" class="form-control" placeholder="Enter contact person">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Number</label>
                             <input type="text" class="form-control" placeholder="Enter contact number">
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <label class="form-label">Site Note</label>
                             <textarea class="form-control" rows="2" placeholder="Enter site notes"></textarea>
                         </div>
@@ -824,7 +812,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-check mt-4">
+                            <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="enableQr">
                                 <label class="form-check-label" for="enableQr">Enable QR Code</label>
                             </div>
@@ -876,23 +864,24 @@
                             <input type="number" step="0.01" class="form-control" placeholder="Enter office rate">
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label">
-                                Name of the Guards
-                                <small class="text-muted">(Include additional info such as Trained Guards, Banned Guards)</small>
-                            </label>
-                            <textarea class="form-control" rows="2" placeholder="Enter guard details"></textarea>
-                        </div>
-
-                        <div class="col-md-6">
+                 
+                        <div class="col-md-3">
                             <label class="form-label">Expenses</label>
                             <input type="text" class="form-control" placeholder="Billable">
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label">Expenses</label>
                             <input type="text" class="form-control" placeholder="Payable">
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                Name of the Guards
+<i data-lucide="info" data-bs-toggle="tooltip" data-bs-title="(Include additional info such as Trained Guards, Banned Guards)"></i>
+                            </label>
+                            <textarea class="form-control" rows="2" placeholder="Enter guard details"></textarea>
+                        </div>
+
                     </div>
 
                     <hr class="my-4">

@@ -594,7 +594,7 @@
 
 <!-- Edit Shift Modal -->
 <div class="modal fade" id="editShiftModal" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -607,161 +607,223 @@
 
                     <div class="shift-wrapper">
 
-                        <!-- SHIFT GROUP -->
                         <div class="shift-group border rounded p-3 mb-4">
 
                             <h6 class="mb-3">Shift Details</h6>
 
                             <div class="row g-3">
 
-                                <!-- Client / Site -->
-                                <div class="col-md-4">
-                                    <label class="form-label">Client *</label>
+                                <div class="col-md-2">
+                                    <label class="form-label">Client <span class="text-danger">*</span></label>
                                     <select class="tomselect">
-                                        <option>ABC Corp</option>
-                                        <option selected>Global Tech Ltd</option>
+                                        <option value="">--choose--</option>
+                                        <option selected>ABC Corp</option>
+                                        <option>Global Tech</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="form-label">Site *</label>
+                                <div class="col-md-2">
+                                    <label class="form-label">Site <span class="text-danger">*</span></label>
                                     <select class="tomselect">
-                                        <option>London HQ</option>
-                                        <option selected>Manchester Data Centre</option>
+                                        <option value="">--choose--</option>
+                                        <option selected>London HQ</option>
+                                        <option>Manchester</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="form-label">Parent Company</label>
                                     <select class="tomselect">
-                                        <option selected>Global Holdings Group</option>
+                                        <option value="">--choose--</option>
+                                        <option selected>ABC Holdings</option>
                                     </select>
                                 </div>
 
-                                <!-- Time -->
-                                <div class="col-md-4">
-                                    <label class="form-label">Start *</label>
-                                    <input type="text" class="form-control fp-time" value="19:00">
+                                <div class="col-md-1">
+                                    <label class="form-label">Start <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control fp-time" value="08:00">
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="form-label">End *</label>
-                                    <input type="text" class="form-control fp-time" value="07:00">
+                                <div class="col-md-1">
+                                    <label class="form-label">End <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control fp-time" value="16:00">
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="form-label">Break (mins)</label>
-                                    <input type="number" class="form-control" value="45">
+                                    <input type="number" class="form-control" value="30">
                                 </div>
 
-                                <!-- Quantity / Rates -->
-                                <div class="col-md-4">
+                                <div class="col-md-1">
                                     <label class="form-label">Quantity</label>
-                                    <input type="number" min="1" class="form-control" value="1">
+                                    <input type="number" min="1" value="1" class="form-control" readonly>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="form-label">Site Rate (£)</label>
-                                    <input type="text" class="form-control" value="18.50">
+                                <div class="col-md-1">
+                                    <label class="form-label">Site Rate</label>
+                                    <input type="number" placeholder="£" class="form-control" value="15">
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="form-label">Employee Rate (£)</label>
-                                    <input type="text" class="form-control" value="15.00">
+                                <div class="col-md-2">
+                                    <label class="form-label">Select Service Type</label>
+                                    <select class="tomselect">
+                                        <option value="">--choose--</option>
+                                        <option selected>Security Guard</option>
+                                    </select>
                                 </div>
 
-                                <!-- Dates -->
-                                <div class="col-md-4">
-                                    <label class="form-label">From *</label>
-                                    <input type="date" class="form-control flatpickr" value="2025-01-08">
+                                <div class="col-md-2">
+                                    <label class="form-label">Select Policies</label>
+                                    <select class="tomselect">
+                                        <option value="">--choose--</option>
+                                        <option selected>ABC</option>
+                                        <option>XYZ</option>
+                                    </select>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="form-label">To *</label>
-                                    <input type="date" class="form-control flatpickr" value="2025-01-31">
+                                <div class="col-md-2">
+                                    <label class="form-label">From <span class="text-danger">*</span></label>
+                                    <input type="date" class="flatpickr form-control" value="2026-01-24">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">To <span class="text-danger">*</span></label>
+                                    <input type="date" class="flatpickr form-control" value="2026-01-30">
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">Comment</label>
-                                    <input type="text" class="form-control" value="Night security cover">
+                                    <input type="text" class="form-control"
+                                           value="Main gate day shift coverage">
                                 </div>
 
-                                <!-- Days -->
                                 <div class="col-md-12">
                                     <label class="form-label">Select Days</label>
                                     <div class="day-selector d-flex gap-2 flex-wrap">
                                         <span class="day-box active" data-day="Mon">Mon</span>
-                                        <span class="day-box" data-day="Tue">Tue</span>
+                                        <span class="day-box active" data-day="Tue">Tue</span>
                                         <span class="day-box active" data-day="Wed">Wed</span>
-                                        <span class="day-box" data-day="Thu">Thu</span>
+                                        <span class="day-box active" data-day="Thu">Thu</span>
                                         <span class="day-box active" data-day="Fri">Fri</span>
                                         <span class="day-box" data-day="Sat">Sat</span>
                                         <span class="day-box" data-day="Sun">Sun</span>
                                     </div>
-                                    <input type="hidden" class="selected-days" value="Mon,Wed,Fri">
+                                    <input type="hidden" class="selected-days" value="Mon,Tue,Wed,Thu,Fri">
                                 </div>
 
-                                <!-- Staff -->
-                                <div class="col-md-4">
-                                    <label class="form-label">Staff</label>
+                                <div class="col-md-2">
+                                    <label class="form-label">Select Staff</label>
                                     <select class="tomselect">
+                                        <option value="">--choose--</option>
                                         <option selected>John Doe</option>
                                         <option>Jane Smith</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="form-label">Subcontractor</label>
                                     <select class="tomselect">
+                                        <option value="">--choose--</option>
                                         <option selected>SecureForce Ltd</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <label class="form-label">Select Service Type</label>
+                                    <select class="tomselect">
+                                        <option value="">--choose--</option>
+                                        <option selected>Static Guarding</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-1">
+                                    <label class="form-label">Start <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control fp-time" value="08:00">
+                                </div>
+
+                                <div class="col-md-1">
+                                    <label class="form-label">End <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control fp-time" value="16:00">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Employee Rate</label>
+                                    <input type="text" placeholder="£" class="form-control" value="12">
+                                </div>
+
+                                <div class="col-md-2">
                                     <label class="form-label">PO Number</label>
                                     <input type="text" class="form-control" value="PO-45872">
                                 </div>
 
-                                <!-- Auto Check Calls -->
-                                <div class="col-md-12 mt-3">
+                                <div class="col-md-2">
+                                    <label class="form-label">Lost Time (mins)</label>
+                                    <input type="number" class="form-control" value="0">
+                                </div>
+
+                                <div class="col-md-1">
+                                    <label class="form-label">PO Rate</label>
+                                    <input type="number" placeholder="£" class="form-control" value="15">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Manager (1)</label>
+                                    <select class="tomselect">
+                                        <option value="">--choose--</option>
+                                        <option selected>Sarah Lee</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Manager (2)</label>
+                                    <select class="tomselect">
+                                        <option value="">--choose--</option>
+                                        <option selected>Mark Wilson</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12 mt-3 d-flex gap-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Restrict Shift Start Time</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Enforce Picture Check</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">Restrict Start Shift Location</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-3 d-flex gap-4">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input auto-checkcall-toggle" type="checkbox" checked>
                                         <label class="form-check-label">Enable Auto Check Calls</label>
                                     </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Require Media Upload for Check Calls</label>
+                                    </div>
                                 </div>
 
-                                <!-- Check Calls -->
                                 <div class="col-md-12 checkcall-section mt-3">
                                     <h6>Check Calls</h6>
-
-                                    <div class="checkcall-rows">
-                                        <div class="row g-2 mb-2">
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control fp-time" value="21:00">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" value="Main Entrance">
-                                            </div>
-                                        </div>
-
-                                        <div class="row g-2">
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control fp-time" value="01:00">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" value="Warehouse Patrol">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="button" class="button light add-checkcall mt-2">
+                                    <div class="checkcall-rows"></div>
+                                    <button type="button" class="button light add-checkcall">
                                         + Add Check Call
+                                    </button>
+                                </div>
+
+                                <div class="col-md-12 d-flex justify-content-end mt-3">
+                                    <button type="button" class="button danger remove-shift">
+                                        Remove Shift
                                     </button>
                                 </div>
 
                             </div>
                         </div>
-                        <!-- /SHIFT GROUP -->
 
                     </div>
 
@@ -777,7 +839,7 @@
     </div>
 </div>
 
-
+<!-- Add shift Modal -->
 <div class="modal fade" id="addShiftModal" tabindex="-1">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">

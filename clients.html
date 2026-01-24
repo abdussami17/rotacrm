@@ -706,7 +706,7 @@
 
 <!-- Add Client Modal -->
 <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -722,35 +722,33 @@
                     <!-- Basic Information -->
                     <h6 class="section-title">Basic Information</h6>
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Client Name</label>
                             <input type="text" class="form-control" required>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control" required>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label">Password</label>
+                        <div class="col-md-2">
+                            <label class="form-label">Password <i data-lucide="info" data-bs-toggle="tooltip" data-bs-title=" Must be at least 8 characters, include uppercase, lowercase, number, and special character."></i></label>
                             <input type="password" class="form-control" required>
-                            <small class="text-muted">
-                                Must be at least 8 characters, include uppercase, lowercase, number, and special character.
-                            </small>
+
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Number</label>
                             <input type="tel" class="form-control">
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-2">
                             <label class="form-label">Address</label>
                             <textarea class="form-control" rows="2"></textarea>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <label class="form-label">Contact Person</label>
                             <input type="text" class="form-control">
                         </div>
@@ -780,7 +778,7 @@
                     <!-- Company & Terms -->
                     <h6 class="section-title">Company & Terms</h6>
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Company</label>
                             <select class="form-select" required>
                                 <option value="">Select Company</option>
@@ -789,7 +787,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Invoice Terms</label>
                             <select class="form-select">
                                 <option value="">Select</option>
@@ -799,7 +797,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Payment Terms</label>
                             <textarea class="form-control" cols="30" rows="4">---</textarea>
                         </div>
