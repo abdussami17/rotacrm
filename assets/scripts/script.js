@@ -140,73 +140,80 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =====================================================
        GAUGE / CIRCULAR PROGRESS
     ===================================================== */
-    const gauge = {
-        target: 80,
-        duration: 2000,
-        circle: document.getElementById('progressCircle'),
-        text: document.getElementById('percentageText'),
-        thumb: document.getElementById('thumb'),
-        container: document.querySelector('.gauge-container'),
     
-        // SVG constants (must match your SVG)
-        svgSize: 200,
-        center: 100,
-        radius: 80
-    };
+    const container = document.querySelector('.gauge-container');
+    const circle = document.getElementById('progressCircle');
+    const text = document.getElementById('percentageText');
+    const thumb = document.getElementById('thumb');
     
-    const STROKE_WIDTH = 8;
-    const THUMB_SIZE = 18;
+    if (!container || !circle || !text || !thumb) return;
     
-    if (gauge.circle && gauge.text && gauge.thumb && gauge.container) {
+    const TARGET = 80;
+    const DURATION = 1800;
     
-        const circumference = 2 * Math.PI * gauge.radius;
-        gauge.circle.style.strokeDasharray = circumference;
-        gauge.circle.style.strokeDashoffset = circumference;
+    /* SVG CONFIG — MUST MATCH SVG */
+    const SVG_SIZE = 200;
+    const CENTER = 100;
+    const RADIUS = 80;
     
-        const moveThumb = (percent) => {
-            const angle = (percent / 100) * 360 - 90;
-            const rad = angle * Math.PI / 180;
+    const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
     
-            // SVG-space position (exact)
-            const svgX =
-                gauge.center +
-                gauge.radius * Math.cos(rad);
+    /* APPLY THEME COLOR */
+    circle.style.stroke = 'rgb(35, 36, 41)';
     
-            const svgY =
-                gauge.center +
-                gauge.radius * Math.sin(rad);
+    circle.style.strokeDasharray = CIRCUMFERENCE;
+    circle.style.strokeDashoffset = CIRCUMFERENCE;
     
-            // Convert SVG → DOM pixels
-            const box = gauge.container.getBoundingClientRect();
-            const scale = box.width / gauge.svgSize;
+    function getScale() {
+        const box = container.getBoundingClientRect();
+        return box.width / SVG_SIZE;
+    }
     
-            const x = svgX * scale;
-            const y = svgY * scale;
+    function moveThumb(percent) {
+        const angle = (percent / 100) * 360 - 90;
+        const rad = angle * Math.PI / 180;
     
-            gauge.thumb.style.left = `${x}px`;
-            gauge.thumb.style.top = `${y}px`;
-            gauge.thumb.style.opacity = '1';
-        };
+        const svgX = CENTER + RADIUS * Math.cos(rad);
+        const svgY = CENTER + RADIUS * Math.sin(rad);
     
+        const scale = getScale();
+    
+        thumb.style.left = `${svgX * scale}px`;
+        thumb.style.top = `${svgY * scale}px`;
+        thumb.style.opacity = '1';
+    }
+    
+    function animateGauge() {
         const start = performance.now();
     
-        const animate = (now) => {
-            const progress = Math.min((now - start) / gauge.duration, 1);
+        function frame(now) {
+            const progress = Math.min((now - start) / DURATION, 1);
             const eased = 1 - Math.pow(1 - progress, 4);
-            const value = gauge.target * eased;
+            const value = TARGET * eased;
     
-            gauge.circle.style.strokeDashoffset =
-                circumference - (circumference * value / 100);
+            circle.style.strokeDashoffset =
+                CIRCUMFERENCE - (CIRCUMFERENCE * value / 100);
     
-            gauge.text.textContent = `${Math.round(value)}%`;
+            text.textContent = `${Math.round(value)}%`;
+    
             moveThumb(value);
     
-            if (progress < 1) requestAnimationFrame(animate);
-        };
+            if (progress < 1) requestAnimationFrame(frame);
+        }
     
-        requestAnimationFrame(animate);
-        window.addEventListener('resize', () => moveThumb(gauge.target));
+        requestAnimationFrame(frame);
     }
+    
+    /* WAIT FOR LAYOUT BEFORE FIRST DRAW */
+    requestAnimationFrame(() => {
+        moveThumb(0);
+        animateGauge();
+    });
+    
+    /* FIX POSITION ON RESIZE */
+    window.addEventListener('resize', () => moveThumb(TARGET));
+    
+   
     
 
     /* =====================================================
@@ -284,144 +291,25 @@ const counters = document.querySelectorAll('.hr-stat-metric-number-display');
 
  document.addEventListener('DOMContentLoaded', function () {
 
-    /* --- Security Timeline Data --- */
-    const activityData = {
-        labels: [
-            '00:00', '02:00', '04:00', '06:00',
-            '08:00', '10:00', '12:00', '14:00',
-            '16:00', '18:00', '20:00', '22:00'
-        ],
-        values: [2, 4, 6, 14, 22, 30, 26, 18, 10, 6, 4, 2]
-    };
-
-    const canvas = document.getElementById('myCanvas');
-
-    if (!canvas) {
-   
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-
-    if (!ctx) {
-       
-        return;
-    }
-
-    /* --- Rebalanced Gradient: Dark → Soft → White --- */
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-
-    gradient.addColorStop(0,   'rgba(0, 33, 64, 0.95)'); // strong dark top
-    gradient.addColorStop(0.3, 'rgba(0, 33, 64, 0.75)'); // increased coverage
-    gradient.addColorStop(0.7, 'rgba(0, 33, 64, 0.25)'); // smooth middle fade
-    gradient.addColorStop(1,   'rgba(255, 255, 255, 0)'); // white bottom
-
-    /* --- Shadow Plugin (Matched to New Color) --- */
-    const shadowPlugin = {
-        id: 'shadowLine',
-        beforeDatasetsDraw(chart) {
-            const { ctx } = chart;
-            ctx.save();
-            ctx.shadowColor = 'rgba(0, 33, 64, 0.45)';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 10;
-        },
-        afterDatasetsDraw(chart) {
-            chart.ctx.restore();
-        }
-    };
-
-    /* --- Chart --- */
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: activityData.labels,
-            datasets: [{
-                data: activityData.values,
-                fill: true,
-                backgroundColor: gradient,
-                borderColor: 'rgb(0, 33, 64)',
-                borderWidth: 3,
-                tension: 0.45,
-                pointRadius: 0,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: '#ffffff',
-                pointHoverBorderColor: 'rgb(0, 33, 64)',
-                pointHoverBorderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: {
-                duration: 2200,
-                easing: 'easeInOutCubic'
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    backgroundColor: '#0b1d2e',
-                    titleColor: '#ffffff',
-                    bodyColor: '#d6e2f0',
-                    padding: 10,
-                    displayColors: false,
-                    callbacks: {
-                        label: ctx => ` Security events: ${ctx.parsed.y}`
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    grid: { display: false },
-                    ticks: {
-                        color: '#8fa6bf',
-                        font: { size: 11 }
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.04)',
-                        drawBorder: false
-                    },
-                    ticks: {
-                        color: '#8fa6bf',
-                        font: { size: 11 }
-                    }
-                }
-            }
-        },
-        plugins: [shadowPlugin]
-    });
-
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-        
     const ctx = document.getElementById('shiftsChart')?.getContext('2d');
     if (!ctx) return;
-    
 
-    /* --- Hour Buckets (Bottom Time Axis) --- */
     const labels = [
         '8 AM','9 AM','10 AM','11 AM',
         '12 PM','1 PM','2 PM','3 PM',
         '4 PM','5 PM','6 PM'
     ];
 
-    /* --- Active Staff Count Per Hour (Live Feel) --- */
     const values = [2, 3, 4, 4, 3, 3, 2, 2, 2, 1, 1];
 
-    /* --- Shadow Plugin (Keep What You Liked) --- */
+    /* Shadow Plugin */
     const shadowPlugin = {
         id: 'barShadow',
         beforeDatasetsDraw(chart) {
-            const { ctx } = chart;
+            const ctx = chart.ctx;
             ctx.save();
-            ctx.shadowColor = 'rgba(0, 33, 64, 0.35)';
-            ctx.shadowBlur = 14;
+            ctx.shadowColor = 'rgba(0,0,0,0.35)';
+            ctx.shadowBlur = 10;
             ctx.shadowOffsetY = 6;
         },
         afterDatasetsDraw(chart) {
@@ -435,7 +323,8 @@ document.addEventListener('DOMContentLoaded', function () {
             labels,
             datasets: [{
                 data: values,
-                backgroundColor: 'rgba(0, 33, 64, 0.85)',
+                backgroundColor: 'rgba(35, 36, 41, 0.95)',
+                hoverBackgroundColor: 'rgba(35, 36, 41, 1)',
                 borderRadius: 10,
                 barThickness: 26
             }]
@@ -443,41 +332,46 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+
             animation: {
-                duration: 1400,
+                duration: 1200,
                 easing: 'easeOutQuart'
             },
+
             plugins: {
                 legend: { display: false },
+
                 tooltip: {
-                    backgroundColor: '#0b1d2e',
+                    backgroundColor: '#111318',
                     titleColor: '#ffffff',
-                    bodyColor: '#d6e2f0',
+                    bodyColor: '#e5e7eb',
+                    padding: 10,
+                    cornerRadius: 10,
                     displayColors: false,
                     callbacks: {
-                        label: ctx =>
-                            ` Active staff: ${ctx.parsed.y}`
+                        label: ctx => ` Active staff: ${ctx.parsed.y}`
                     }
                 }
             },
+
             scales: {
                 x: {
                     grid: { display: false },
                     ticks: {
-                        color: '#8fa6bf',
-                        font: { size: 11 }
+                        color: '#9ca3af',
+                        font: { size: 11, family: 'Poppins' }
                     }
                 },
                 y: {
                     beginAtZero: true,
                     suggestedMax: 5,
                     grid: {
-                        color: 'rgba(0,0,0,0.05)',
+                        color: 'rgba(0,0,0,0.06)',
                         drawBorder: false
                     },
                     ticks: {
                         stepSize: 1,
-                        color: '#8fa6bf'
+                        color: '#9ca3af'
                     }
                 }
             }

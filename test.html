@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Perfect Match</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F6FA;
+            padding: 24px;
+            overflow-x: hidden;
+        }
+
+        .dashContainer_mainWrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .dashContainer_card {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            height: 100%;
+            margin-bottom: 20px;
+        }
+
+        .dashContainer_scheduleHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .dashContainer_scheduleDate {
+            font-size: 13px;
+            color: #A0A4A8;
+            font-weight: 400;
+        }
+
+        .dashContainer_scheduleTitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1D1F;
+        }
+
+        .dashContainer_moreBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #A0A4A8;
+            padding: 0;
+        }
+
+        .dashContainer_tabGroup {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .dashContainer_tab {
+            padding: 10px 18px;
+            background-color: #F5F6FA;
+            color: #A0A4A8;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dashContainer_tabActive {
+            background-color: #1A1D1F;
+            color: #FFFFFF;
+        }
+
+        .dashContainer_meetingItem {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .dashContainer_meetingItem:last-child {
+            margin-bottom: 0;
+        }
+
+        .dashContainer_meetingIcon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dashContainer_meetingIconYellow {
+            background-color: #FFF4E6;
+        }
+
+        .dashContainer_meetingIconGreen {
+            background-color: #E7F7EF;
+        }
+
+        .dashContainer_meetingContent {
+            flex: 1;
+        }
+
+        .dashContainer_meetingTitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1D1F;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .dashContainer_meetingSubtitle {
+            font-size: 12px;
+            color: #A0A4A8;
+            margin-bottom: 10px;
+        }
+
+        .dashContainer_meetingDetails {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: #6C7275;
+        }
+
+        .dashContainer_meetingAvatar {
+            width: 24px;
+            height: 24px;
+            background-color: #FFD6A5;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+
+        .dashContainer_kpiHeader {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .dashContainer_kpiIconBox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #E8EAED;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashContainer_kpiValue {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1A1D1F;
+        }
+
+        .dashContainer_kpiTrend {
+            margin-left: auto;
+        }
+
+        .dashContainer_kpiLabel {
+            font-size: 13px;
+            color: #A0A4A8;
+            margin-bottom: 24px;
+        }
+
+        .dashContainer_chartWrapper {
+            width: 100%;
+            height: 200px;
+            position: relative;
+        }
+
+        .dashContainer_employmentHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .dashContainer_employmentTitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1D1F;
+        }
+
+        .dashContainer_barChartContainer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            height: 160px;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .dashContainer_barWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            flex: 1;
+        }
+
+        .dashContainer_barColumn {
+            width: 100%;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .dashContainer_barYellow {
+            background-color: #FFD666;
+            height: 140px;
+        }
+
+        .dashContainer_barDark {
+            background-color: #2C2F33;
+            height: 90px;
+        }
+
+        .dashContainer_barGray {
+            background-color: #B8BCC2;
+            height: 60px;
+        }
+
+        .dashContainer_barPercentage {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 600;
+            color: #1A1D1F;
+            white-space: nowrap;
+        }
+
+        .dashContainer_barLabel {
+            font-size: 11px;
+            color: #6C7275;
+            font-weight: 500;
+        }
+
+        .dashContainer_employmentStats {
+            text-align: right;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .dashContainer_employmentTotal {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A1D1F;
+        }
+
+        .dashContainer_employmentSubtitle {
+            font-size: 13px;
+            color: #A0A4A8;
+        }
+
+        .dashContainer_leaveGrid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .dashContainer_leaveItem {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            border-radius: 12px;
+            min-height: 180px;
+        }
+
+        .dashContainer_leaveIconWrapper {
+            width: 48px;
+            height: 48px;
+            background-color: #FFF7E6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .dashContainer_leaveLabel {
+            font-size: 12px;
+            color: #6C7275;
+            margin-bottom: 8px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .dashContainer_leaveValue {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1A1D1F;
+            margin-bottom: auto;
+            padding-bottom: 16px;
+        }
+
+        .dashContainer_leaveButton {
+            background: none;
+            border: none;
+            color: #6C7275;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+            font-weight: 400;
+            transition: color 0.3s;
+            margin-top: auto;
+        }
+
+        .dashContainer_leaveButton:hover {
+            color: #1A1D1F;
+        }
+
+        @media (max-width: 1199px) {
+            .dashContainer_leaveGrid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .dashContainer_leaveGrid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 16px;
+            }
+
+            .dashContainer_card {
+                padding: 20px;
+            }
+
+            .dashContainer_kpiValue {
+                font-size: 28px;
+            }
+
+            .dashContainer_employmentTotal {
+                font-size: 24px;
+            }
+
+            .dashContainer_leaveGrid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashContainer_tabGroup {
+                flex-wrap: wrap;
+            }
+
+            .dashContainer_barChartContainer {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid dashContainer_mainWrapper">
+        <div class="row">
+            <!-- Left Column - Schedule (Bigger) -->
+            <div class="col-12 col-lg-5">
+                <div class="dashContainer_card" style="height: calc(100% - 20px);">
+                    <div class="dashContainer_scheduleHeader">
+                        <span class="dashContainer_scheduleDate">11 Nov 2024</span>
+                        <span class="dashContainer_scheduleTitle">Schedule</span>
+                        <button class="dashContainer_moreBtn">
+                            <i data-lucide="more-vertical" width="20" height="20"></i>
+                        </button>
+                    </div>
+
+                    <div class="dashContainer_tabGroup">
+                        <button class="dashContainer_tab dashContainer_tabActive">Meetings</button>
+                        <button class="dashContainer_tab">Tasks</button>
+                        <button class="dashContainer_tab">Events</button>
+                    </div>
+
+                    <div class="dashContainer_meetingItem">
+                        <div class="dashContainer_meetingIcon dashContainer_meetingIconYellow">
+                            <i data-lucide="clock" width="22" height="22" stroke="#FFA940"></i>
+                        </div>
+                        <div class="dashContainer_meetingContent">
+                            <div class="dashContainer_meetingTitle">Interview Candidate UI/UX Designer</div>
+                            <div class="dashContainer_meetingSubtitle">Project Discussion</div>
+                            <div class="dashContainer_meetingDetails">
+                                <span>Google Meet</span>
+                                <span>13:00 - 13:30</span>
+                                <div class="dashContainer_meetingAvatar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashContainer_meetingItem">
+                        <div class="dashContainer_meetingIcon dashContainer_meetingIconGreen">
+                            <i data-lucide="check" width="22" height="22" stroke="#52C41A"></i>
+                        </div>
+                        <div class="dashContainer_meetingContent">
+                            <div class="dashContainer_meetingTitle">Retro Day Celebration - HR Department</div>
+                            <div class="dashContainer_meetingSubtitle">Arrangement Plan</div>
+                            <div class="dashContainer_meetingDetails">
+                                <span>Google Meet</span>
+                                <span>15:00 - 16:00</span>
+                                <div class="dashContainer_meetingAvatar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-12 col-lg-7">
+                <div class="row">
+                    <!-- KPI Chart -->
+                    <div class="col-12 col-md-6">
+                        <div class="dashContainer_card">
+                            <div class="dashContainer_kpiHeader">
+                                <div class="dashContainer_kpiIconBox">
+                                    <i data-lucide="calendar" width="16" height="16" stroke="#A0A4A8"></i>
+                                </div>
+                                <span class="dashContainer_kpiValue">70,32%</span>
+                                <div class="dashContainer_kpiTrend">
+                                    <i data-lucide="trending-up" width="20" height="20" stroke="#52C41A"></i>
+                                </div>
+                            </div>
+                            <div class="dashContainer_kpiLabel">Average Team KPI</div>
+                            
+                            <div class="dashContainer_chartWrapper">
+                                <canvas id="dashContainer_kpiChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employment Status -->
+                    <div class="col-12 col-md-6">
+                        <div class="dashContainer_card">
+                            <div class="dashContainer_employmentHeader">
+                                <span class="dashContainer_employmentTitle">Employment Status</span>
+                                <button class="dashContainer_moreBtn">
+                                    <i data-lucide="more-vertical" width="20" height="20"></i>
+                                </button>
+                            </div>
+
+                            <div class="dashContainer_employmentStats">
+                                <div class="dashContainer_employmentTotal">450</div>
+                                <div class="dashContainer_employmentSubtitle">Active Employees</div>
+                            </div>
+
+                            <div class="dashContainer_barChartContainer">
+                                <div class="dashContainer_barWrapper">
+                                    <div class="dashContainer_barColumn dashContainer_barYellow">
+                                        <span class="dashContainer_barPercentage">69%</span>
+                                    </div>
+                                    <span class="dashContainer_barLabel">Permanent</span>
+                                </div>
+
+                                <div class="dashContainer_barWrapper">
+                                    <div class="dashContainer_barColumn dashContainer_barDark">
+                                        <span class="dashContainer_barPercentage">31%</span>
+                                    </div>
+                                    <span class="dashContainer_barLabel">Contract</span>
+                                </div>
+
+                                <div class="dashContainer_barWrapper">
+                                    <div class="dashContainer_barColumn dashContainer_barGray">
+                                        <span class="dashContainer_barPercentage">19%</span>
+                                    </div>
+                                    <span class="dashContainer_barLabel">Probation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Leaves -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="dashContainer_card" style="padding: 28px 24px;">
+                            <div class="dashContainer_leaveGrid">
+                                <div class="dashContainer_leaveItem">
+                                    <div class="dashContainer_leaveIconWrapper">☀️</div>
+                                    <div class="dashContainer_leaveLabel">Annual Leave</div>
+                                    <div class="dashContainer_leaveValue">12 Days</div>
+                                    <button class="dashContainer_leaveButton">
+                                        <span>Request Leave</span>
+                                        <i data-lucide="arrow-right" width="14" height="14"></i>
+                                    </button>
+                                </div>
+
+                                <div class="dashContainer_leaveItem">
+                                    <div class="dashContainer_leaveIconWrapper">☀️</div>
+                                    <div class="dashContainer_leaveLabel">Monthly Leave</div>
+                                    <div class="dashContainer_leaveValue">2 Days</div>
+                                    <button class="dashContainer_leaveButton">
+                                        <span>Request Leave</span>
+                                        <i data-lucide="arrow-right" width="14" height="14"></i>
+                                    </button>
+                                </div>
+
+                                <div class="dashContainer_leaveItem">
+                                    <div class="dashContainer_leaveIconWrapper">☀️</div>
+                                    <div class="dashContainer_leaveLabel">Daily Leave</div>
+                                    <div class="dashContainer_leaveValue">8 Days</div>
+                                    <button class="dashContainer_leaveButton">
+                                        <span>Request Leave</span>
+                                        <i data-lucide="arrow-right" width="14" height="14"></i>
+                                    </button>
+                                </div>
+
+                                <div class="dashContainer_leaveItem">
+                                    <div class="dashContainer_leaveIconWrapper">☀️</div>
+                                    <div class="dashContainer_leaveLabel">Hourly Leave</div>
+                                    <div class="dashContainer_leaveValue">6 Days</div>
+                                    <button class="dashContainer_leaveButton">
+                                        <span>Request Leave</span>
+                                        <i data-lucide="arrow-right" width="14" height="14"></i>
+                                    </button>
+                                </div>
+
+                                <div class="dashContainer_leaveItem">
+                                    <div class="dashContainer_leaveIconWrapper" style="background: transparent;"></div>
+                                    <div class="dashContainer_leaveLabel">Sick Leave Used</div>
+                                    <div class="dashContainer_leaveValue">5 Days</div>
+                                    <button class="dashContainer_leaveButton">
+                                        <span>Request Leave</span>
+                                        <i data-lucide="arrow-right" width="14" height="14"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <script>
+        lucide.createIcons();
+
+        var kpiCtx = document.getElementById('dashContainer_kpiChart').getContext('2d');
+        
+        var gradient = kpiCtx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, 'rgba(255, 214, 102, 0.3)');
+        gradient.addColorStop(1, 'rgba(255, 214, 102, 0)');
+
+        var chartConfig = {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    data: [50, 55, 42, 48, 30, 45],
+                    borderColor: '#FFD666',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: '#FFD666',
+                    pointHoverBorderColor: '#FFFFFF',
+                    pointHoverBorderWidth: 3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: '#1F2937',
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        titleFont: {
+                            family: 'Poppins',
+                            size: 12
+                        },
+                        bodyFont: {
+                            family: 'Poppins',
+                            size: 13,
+                            weight: 600
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#A0A4A8',
+                            font: {
+                                family: 'Poppins',
+                                size: 11,
+                                weight: 400
+                            },
+                            padding: 8
+                        }
+                    },
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        };
+
+        new Chart(kpiCtx, chartConfig);
+
+        var tabs = document.querySelectorAll('.dashContainer_tab');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener('click', function() {
+                var allTabs = document.querySelectorAll('.dashContainer_tab');
+                for (var j = 0; j < allTabs.length; j++) {
+                    allTabs[j].classList.remove('dashContainer_tabActive');
+                }
+                this.classList.add('dashContainer_tabActive');
+            });
+        }
+    </script>
+</body>
+</html>

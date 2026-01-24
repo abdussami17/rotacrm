@@ -1,0 +1,423 @@
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F6FA;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+.dashContainer_mainWrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+} */
+
+.dashContainer_card {
+    background:var(--color-card-bg);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+
+    border-radius: 20px;
+    padding: 24px;
+    height: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+
+    border: 1px solid var(--dashboard-card-border);
+/* 
+    box-shadow:
+        0 6px 20px rgba(16, 24, 40, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6); */
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+
+.dashContainer_scheduleHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashContainer_scheduleDate {
+    font-size: 13px;
+    color: #A0A4A8;
+    font-weight: 400;
+}
+
+.dashContainer_scheduleTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.dashContainer_moreBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #A0A4A8;
+    padding: 0;
+}
+
+.dashContainer_tabGroup {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.dashContainer_tab {
+    padding: 8px 16px;
+    background-color:transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 32px;
+    font-size: 13px;
+    /* font-weight: 500; */
+    min-width: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dashContainer_tabActive {
+    background-color: var(--theme-color);
+    color: var(--color-text-white);
+}
+
+.dashContainer_meetingItem {
+    display: flex;
+    gap: 14px;
+    border: 1px solid var(--color-border-primary);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.dashContainer_meetingItem:last-child {
+    margin-bottom: 0;
+}
+
+.dashContainer_meetingIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    background-color: var(--theme-color);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+}
+
+
+.dashContainer_meetingIconYellow {
+    background-color: #FFF4E6;
+}
+
+.dashContainer_meetingIconGreen {
+    background-color: #E7F7EF;
+}
+
+.dashContainer_meetingContent {
+    flex: 1;
+}
+
+.dashContainer_meetingTitle {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.dashContainer_meetingSubtitle {
+    font-size: 12px;
+    color: #A0A4A8;
+    margin-bottom: 10px;
+}
+
+.dashContainer_meetingDetails {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6C7275;
+}
+.dashContainer_meetingDetails .badge-custom{
+    background-color: #fff;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 12px;
+    padding: 4px 10px;
+}
+.dashContainer_meetingAvatar img{
+height: 30px;
+width: 30px;
+border-radius: 50%;
+/* object-fit: cover; */
+}
+
+.dashContainer_kpiHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.dashContainer_kpiIconBox {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    margin-bottom: 4px;
+    height: 28px;
+    border: 1px solid var(--color-border);
+    background: #fff;
+    border-radius: 6px;
+}
+
+.dashContainer_kpiValue {
+    font-size: 36px;
+    /* font-weight: 700; */
+    color: var(--color-text-primary);
+}
+
+.dashContainer_kpiTrend {
+    margin-left: auto;
+}
+
+.dashContainer_kpiLabel {
+    font-size: 13px;
+    color: #A0A4A8;
+    margin-bottom: 24px;
+}
+
+.dashContainer_chartWrapper {
+    width: calc(100% + 48px); 
+    height: 200px;
+    position: relative;
+    margin-left: -24px;
+    margin-right: -24px;
+}
+.dashContainer_chartWrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+
+
+.dashContainer_employmentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.dashContainer_employmentTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.dashContainer_barChartContainer {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 6px;
+    height: 180px;
+padding-top: 0;
+}
+
+.dashContainer_barWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+    position: relative;
+    flex: 1;
+}
+
+.dashContainer_barColumn {
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+}
+
+.dashContainer_barYellow {
+    background-color: var(--theme-secondary);
+    height: 100%;
+}
+
+.dashContainer_barDark {
+    background-color: #2C2F33;
+    height: 65%;
+}
+
+.dashContainer_barGray {
+    background-color: #B8BCC2;
+    height: 40%;
+}
+
+.dashContainer_barPercentage {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+.dashContainer_barLabel {
+    font-size: 11px;
+    color: #6C7275;
+    font-weight: 500;
+}
+
+.dashContainer_employmentStats {
+    text-align: right;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.dashContainer_employmentTotal {
+    font-size: 32px;
+    /* font-weight: 700; */
+    color: var(--color-text-primary);
+}
+
+.dashContainer_employmentSubtitle {
+    font-size: 13px;
+    color: #A0A4A8;
+}
+
+.dashContainer_leaveGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.dashContainer_leaveItem {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    min-height: 180px;
+}
+
+.dashContainer_leaveIconWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--theme-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--color-text-white);
+}
+.dashContainer_leaveIconWrapper svg{
+    width: 20px;
+    height: 20px;
+}
+.dashContainer_leaveLabel {
+    font-size: 12px;
+    color: #6C7275;
+    margin-bottom: 8px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.dashContainer_leaveValue {
+    font-size: 24px;
+    /* font-weight: 700; */
+    color: var(--color-text-primary);
+    margin-bottom: auto;
+    padding-bottom: 16px;
+}
+
+.dashContainer_leaveButton {
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    font-weight: 400;
+    transition: color 0.3s;
+    margin-top: auto;
+}
+.leave-icon-wrapper{
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  border: 1px solid var(--color-border-primary);
+}
+.leave-icon-wrapper svg{
+    height: 14px;
+    width: 14px;
+}
+
+.dashContainer_leaveButton:hover {
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 1199px) {
+    .dashContainer_leaveGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 991px) {
+    .dashContainer_leaveGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+
+
+    .dashContainer_card {
+        padding: 20px;
+    }
+
+    .dashContainer_kpiValue {
+        font-size: 28px;
+    }
+
+    .dashContainer_employmentTotal {
+        font-size: 24px;
+    }
+
+    .dashContainer_leaveGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashContainer_tabGroup {
+        flex-wrap: wrap;
+    }
+
+    .dashContainer_barChartContainer {
+        gap: 8px;
+    }
+}
