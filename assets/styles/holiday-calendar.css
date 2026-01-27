@@ -261,3 +261,6 @@
     text-decoration: none;
     color: #000;
 }
+.fc-list-event-time , .fc-list-event-title{
+    color:var(--text-color-white);
+}

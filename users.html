@@ -83,13 +83,13 @@
             <!-- User Management Section -->
             <section class="sidebar-section" aria-labelledby="user-management-heading">
                 <h3 id="user-management-heading" class="sidebar-section-title">
-                    <button class="section-toggle" aria-expanded="false" aria-controls="user-management-items">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="user-management-items">
                         <i class="fas fa-chevron-down section-chevron" id="user-management-chevron"></i>
                         <span>User Management</span>
                     </button>
                 </h3>
                 <div class="section-items" id="user-management-items" role="menu" aria-labelledby="user-management-heading">
-                    <a href="users.html" class="section-item" role="menuitem">
+                    <a href="users.html" class="section-item active" role="menuitem">
                         <i data-lucide="users" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">All Users</span>
                     </a>
@@ -724,82 +724,75 @@
     </div>
 </div>
 
-<!-- View User Details Modal -->
-<div class="modal fade" id="viewUserModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">User Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <div class="row g-3">
-
-                    <!-- Full Name -->
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Full Name</span>
-                            <span class="detail-value">Super Admin</span>
-                        </div>
-                    </div>
-
-                    <!-- Username -->
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Username</span>
-                            <span class="detail-value">superadmin</span>
-                        </div>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Email</span>
-                            <span class="detail-value">admin@supreme.com</span>
-                        </div>
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Phone Number</span>
-                            <span class="detail-value">+44 7700 123456</span>
-                        </div>
-                    </div>
-
-                    <!-- Status -->
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Status</span>
-                            <span class="detail-value">Active</span>
-                        </div>
-                    </div>
-
-                    <!-- Profile Picture -->
-                    <div class="col-md-6 text-center">
-                        <div class="detail-item">
-                            <span class="detail-label d-block mb-2">Profile Picture</span>
-                            <img src="https://img.freepik.com/premium-vector/user-profile-icon_1256048-12499.jpg?w=740&q=80" 
-                                 alt="Profile Picture" class="rounded-circle" style="width:100px; height:100px; object-fit:cover;">
-                            <div class="mt-1 text-muted">No profile picture</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button class="button light" data-bs-dismiss="modal">Close</button>
-            </div>
-
+<!-- View User Modal -->
+<div class="modal fade" id="viewUserModal" tabindex="-1" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h5 class="modal-title">View User Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+  
+        <div class="modal-body">
+          <form id="viewUserForm">
+  
+            <!-- Profile Picture -->
+            <div class="mb-4 text-center">
+              <div class="profile-upload-wrapper position-relative d-inline-block">
+                <img id="profilePreview" 
+                     src="https://tse1.mm.bing.net/th/id/OIP.xS_dMHeQQchQogaKmTtWmwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" 
+                     class="rounded-circle profile-img" alt="Profile Picture">
+              </div>
+            </div>
+  
+            <!-- User Fields -->
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" name="first_name" class="form-control" value="John" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="form-control" value="Doe" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" value="john.doe@example.com" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" name="phone_number" class="form-control" value="+44 7911 123456" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Password</label>
+                <input type="text" name="password" class="form-control" value="********" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Confirm Password</label>
+                <input type="text" name="confirm_password" class="form-control" value="********" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <input type="text" class="form-control" value="Active" readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Role</label>
+                <input type="text" class="form-control" value="Admin" readonly>
+              </div>
+            </div>
+  
+          </form>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="button light" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
     </div>
 </div>
+
 
 
 <!-- Sucess Modal -->

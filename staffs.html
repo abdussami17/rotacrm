@@ -113,7 +113,7 @@
                         <i data-lucide="calendar-clock" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">Scheduling</span>
                     </a>
-                    <a href="worker-calendar.html" class="section-item" role="menuitem">
+                    <a href="security-staff-calendar.html" class="section-item" role="menuitem">
                         <i data-lucide="calendar-plus" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">Worker Calendar</span>
                     </a>
@@ -1734,252 +1734,590 @@
     </div>
 </div>
 
-<!-- View Staff Details Modal -->
-<div class="modal fade" id="viewStaffModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+<!-- View Staff Detail Modal -->
+<div class="modal fade" id="viewStaffModal" tabindex="-1" aria-labelledby="viewStaffModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-
+            
+            <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title">Staff Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="viewStaffModalLabel">Staff Details - John Smith (ID: STAFF-001)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
+            
+            <!-- Modal Body -->
             <div class="modal-body">
-                <div class="row g-3">
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Full Name</span>
-                            <span class="detail-value">12345678 sami1212</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Email</span>
-                            <span class="detail-value">sami@gmail.com</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Gender</span>
-                            <span class="detail-value">Male</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">NI Number</span>
-                            <span class="detail-value">000000</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">SIA Licence</span>
-                            <span class="detail-value">asdahdladad</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">SIA Expiry</span>
-                            <span class="detail-value">2026-02-08</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Licence Type</span>
-                            <span class="detail-value">Close Protection</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Entry Date</span>
-                            <span class="detail-value">2026-03-12</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Date of Birth</span>
-                            <span class="detail-value">2004-06-11</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Service Type</span>
-                            <span class="detail-value">Full-time</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Visa Type</span>
-                            <span class="detail-value">Indefinite leave to remain (ILR)</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Visa Expiry</span>
-                            <span class="detail-value">—</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Place of Work</span>
-                            <span class="detail-value">dfsf</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Contact Number</span>
-                            <span class="detail-value">1234576995</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Emergency Contact</span>
-                            <span class="detail-value">01212121212</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Job Title</span>
-                            <span class="detail-value">dasdasd</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Nationality</span>
-                            <span class="detail-value">pakistan</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Passport No</span>
-                            <span class="detail-value">2311313</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Passport Expiry</span>
-                            <span class="detail-value">2026-03-02</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Driving Licence</span>
-                            <span class="detail-value">erwerwr</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Driving Licence Expiry</span>
-                            <span class="detail-value">2026-03-18</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Address Group</span>
-                            <span class="detail-value">Manager</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Guard Rate</span>
-                            <span class="detail-value">$12</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="detail-item">
-                            <span class="detail-label">Bank Info</span>
-                            <span class="detail-value">asdadasda / 121212 / 121212</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="detail-item">
-                            <span class="detail-label">Other Info</span>
-                            <span class="detail-value">asdad</span>
-                        </div>
-                    </div>
-
-                    <!-- Documents Section -->
-                    <div class="col-md-12">
-                        <div class="section-title mt-4 mb-3">
-                            <h6 class="mb-0">Documents</h6>
+                <form id="viewStaffForm">
+                    
+                    <!-- Account Information -->
+                    <h6 class="section-title mb-3">Account Information</h6>
+                    <div class="row g-3 mb-0">
+                        <div class="col-md-4">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="john.smith@example.com" readonly>
                         </div>
                         
-                        <div class="detail-item mb-3">
-                            <span class="detail-label">Documents (DB)</span>
-                            <span class="detail-value text-muted">Employee didn't upload any approved main document.</span>
+                        <div class="col-md-4">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" value="••••••••" readonly>
+                            <small class="text-muted">Password is encrypted for security</small>
                         </div>
                         
-                        <div class="detail-item mb-3">
-                            <span class="detail-label">Pending Documents</span>
-                            <span class="detail-value text-muted">No pending documents.</span>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span class="detail-label">Additional Documents</span>
-                            <span class="detail-value text-muted">No additional documents uploaded.</span>
+                        <div class="col-md-4">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" name="status" disabled>
+                                <option value="Active" selected>Active</option>
+                                <option value="Terminated">Terminated</option>
+                                <option value="need_approval">Need Approval</option>
+                            </select>
                         </div>
                     </div>
-
-                    <!-- Weekly Availability Section -->
-                    <div class="col-md-12">
-                        <div class="section-title mt-4 mb-3">
-                            <h6 class="mb-0">Weekly Availability</h6>
+                    
+                    <!-- Personal Information -->
+                    <h6 class="section-title mb-3">Personal Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">Forename</label>
+                            <input type="text" name="fore_name" class="form-control" value="John" readonly>
                         </div>
                         
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Day</th>
-                                        <th>Start</th>
-                                        <th>End</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="3" class="text-center text-muted py-4">
-                                            No availability set.
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-2">
+                            <label class="form-label">Surname</label>
+                            <input type="text" name="sur_name" class="form-control" value="Smith" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Date of Birth</label>
+                            <input type="text" name="dob" class="form-control" value="15/05/1985" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Gender</label>
+                            <select class="form-control" name="gender" disabled>
+                                <option value="Male" selected>Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Nationality</label>
+                            <input type="text" name="nationality" class="form-control" value="British" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Contact Number</label>
+                            <input type="tel" name="contact" class="form-control" value="+44 7911 123456" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">N.I. Number</label>
+                            <input type="text" name="ni_number" class="form-control" value="AB 12 34 56 C" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Place of Work</label>
+                            <input type="text" name="place_work" class="form-control" value="London Office" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Job Title</label>
+                            <input type="text" name="job_title" class="form-control" value="Security Supervisor" readonly>
                         </div>
                     </div>
-
-                </div>
+                    
+                    <!-- Employment Information -->
+                    <h6 class="section-title mb-3">Employment Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                            <label class="form-label">Employment Start Date</label>
+                            <input type="text" name="employment_start_date" class="form-control" value="01/04/2020" readonly>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Employment End Date</label>
+                            <input type="text" name="employment_end_date" class="form-control" value="" readonly>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Date of Entry / Re-entry</label>
+                            <input type="text" name="entry_date" class="form-control" value="15/04/2020" readonly>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Department</label>
+                            <select class="form-control" name="department_id" disabled>
+                                <option value="1" selected>Security Operations</option>
+                                <option value="">-- Choose --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Service Type</label>
+                            <select class="form-control" name="service_type" disabled>
+                                <option value="full_time" selected>Full Time</option>
+                                <option value="">-- Choose --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Subcontractor</label>
+                            <select class="form-control" name="subcontractor" disabled>
+                                <option value="">-- Choose --</option>
+                                <option value="direct" selected>Direct Employee</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Hours Per Week</label>
+                            <input type="number" name="hour_per_week" class="form-control" value="40" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- License Information -->
+                    <h6 class="section-title mb-3">License Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">SIA Licence</label>
+                            <input type="text" name="sia_licence" class="form-control" value="SIALIC-123456" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">SIA Expiry</label>
+                            <input type="text" name="sia_expiry" class="form-control" value="30/06/2025" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Licence Type</label>
+                            <select class="form-control" name="licence_type" disabled>
+                                <option value="ds" selected>Door Supervisor</option>
+                                <option value="">-- Choose --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Driving Licence Number</label>
+                            <input type="text" name="driving_licence_number" class="form-control" value="SMITH8505159JS" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Driving Licence Expiry</label>
+                            <input type="text" name="driving_licence_expiry" class="form-control" value="15/05/2030" readonly>
+                        </div>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="siaNotRequired" disabled checked>
+                        <label class="form-check-label" for="siaNotRequired">SIA not required</label>
+                    </div>
+                    
+                    <!-- Additional License Section -->
+                    <div class="mb-4">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="toggleAdditionalLicense" disabled checked>
+                            <label class="form-check-label" for="toggleAdditionalLicense">
+                                Additional License
+                            </label>
+                        </div>
+                        
+                        <div id="additionalLicenseSection">
+                            <h6 class="section-title mb-3">Additional License Information</h6>
+                            <div class="row g-3">
+                                <div class="col-md-2">
+                                    <label class="form-label">S.I.A License</label>
+                                    <input type="text" name="additional_sia_number" class="form-control" value="ADD-SIA-789012" readonly>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <label class="form-label">License Type</label>
+                                    <select class="form-control" name="additional_license_type" disabled>
+                                        <option value="cctv" selected>CCTV Operator</option>
+                                        <option value="">--choose--</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <label class="form-label">License Expiry</label>
+                                    <input type="text" name="additional_license_expiry" class="form-control" value="31/12/2024" readonly>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <label class="form-label">DBS confirmed</label>
+                                    <input type="text" name="dbs_confirmed" class="form-control" value="Enhanced DBS Clear" readonly>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <label class="form-label">Address group</label>
+                                    <select class="form-control" name="address_group_additional" disabled>
+                                        <option value="group_a" selected>Group A</option>
+                                        <option value="">--choose--</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <label class="form-label">Profile Picture</label>
+                                    <input type="text" class="form-control" value="profile_john.jpg" readonly>
+                                    <small class="text-muted">File uploaded</small>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Staff Type</label>
+                                    <select class="form-control" name="employee_type" disabled>
+                                        <option value="permanent" selected>Permanent</option>
+                                        <option value="">--choose--</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Do you need visa to work or remain in the UK?</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input type="radio" name="visa_to_work" class="form-check-input" value="1" id="visaYes" disabled>
+                                            <label class="form-check-label" for="visaYes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" name="visa_to_work" class="form-check-input" value="0" id="visaNo" checked disabled>
+                                            <label class="form-check-label" for="visaNo">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">A current driving license?</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input type="radio" name="driving_license_additional" class="form-check-input" value="1" id="licenseYes" checked disabled>
+                                            <label class="form-check-label" for="licenseYes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" name="driving_license_additional" class="form-check-input" value="0" id="licenseNo" disabled>
+                                            <label class="form-check-label" for="licenseNo">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">License Number</label>
+                                    <input type="text" name="license_number" class="form-control" value="DVLA-UK-2020" readonly>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Vehicle in use?</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input type="radio" name="vehicle_in_use" class="form-check-input" value="1" id="vehicleYes" disabled>
+                                            <label class="form-check-label" for="vehicleYes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" name="vehicle_in_use" class="form-check-input" value="0" id="vehicleNo" checked disabled>
+                                            <label class="form-check-label" for="vehicleNo">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-8">
+                                    <label class="form-label">Any current endorsement. If so please give details</label>
+                                    <input type="text" name="current_endorsement" class="form-control" value="None" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Visa & Passport -->
+                    <h6 class="section-title mb-3">Visa & Passport Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">Visa Type</label>
+                            <select class="form-control" name="visa_type" disabled>
+                                <option value="">-- Choose --</option>
+                                <option value="none" selected>Not Required</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Visa Expiry</label>
+                            <input type="text" name="visa_expiry" class="form-control" value="N/A" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Passport Number</label>
+                            <input type="text" name="passport_no" class="form-control" value="GB12345678" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Passport Expiry</label>
+                            <input type="text" name="passport_expiry" class="form-control" value="15/05/2030" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Share Code</label>
+                            <input type="text" name="share_code" class="form-control" value="N/A" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Share Code Expiry</label>
+                            <input type="text" name="share_code_expiry" class="form-control" value="N/A" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Biometric Residence Permit</label>
+                            <input type="text" name="biometric_residence_permit" class="form-control" value="N/A" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">BRP Expiry</label>
+                            <input type="text" name="biometric_residence_permit_expiry" class="form-control" value="N/A" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Settlement</label>
+                            <input type="text" name="settlement" class="form-control" value="Indefinite Leave to Remain" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- Next of Kin -->
+                    <h6 class="section-title mb-3">Next of Kin Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">Next of Kin Name</label>
+                            <input type="text" name="next_kin" class="form-control" value="Sarah Smith" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Relationship</label>
+                            <input type="text" name="relation_with_kin" class="form-control" value="Spouse" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Kin Address</label>
+                            <input type="text" name="kin_address" class="form-control" value="123 Baker Street, London, W1U 6TY" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Kin Contact Number</label>
+                            <input type="tel" name="kin_number" class="form-control" value="+44 7911 654321" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Kin Work Telephone</label>
+                            <input type="tel" name="kin_work_tel" class="form-control" value="+44 20 7123 4567" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Kin Mobile</label>
+                            <input type="tel" name="kin_mobile" class="form-control" value="+44 7911 654321" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Emergency Contact</label>
+                            <input type="tel" name="emergency_contact" class="form-control" value="+44 7911 654321" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- Documents -->
+                    <h6 class="section-title mb-3">Documents</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">SIA Licence File</label>
+                            <input type="text" class="form-control" value="sia_licence_123456.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Passport File</label>
+                            <input type="text" class="form-control" value="passport_scan.jpg" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Proof of Address</label>
+                            <input type="text" class="form-control" value="utility_bill.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Driving Licence File</label>
+                            <input type="text" class="form-control" value="driving_licence.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">NI Letter</label>
+                            <input type="text" class="form-control" value="ni_letter.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Right to Work</label>
+                            <input type="text" class="form-control" value="right_to_work.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">ACT Certificate</label>
+                            <input type="text" class="form-control" value="act_certificate.pdf" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Signature</label>
+                            <input type="text" class="form-control" value="signature.png" readonly>
+                            <small class="text-muted">Uploaded: 15/04/2020</small>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Additional Documents</label>
+                            <input type="text" class="form-control" value="3 files uploaded" readonly>
+                            <small class="text-muted">Uploaded: Various dates</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Uniform Size -->
+                    <h6 class="section-title mb-3">Uniform Size</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">Collar</label>
+                            <input type="text" name="collar" class="form-control" value="16" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Waist</label>
+                            <input type="text" name="waist" class="form-control" value="34" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Jacket</label>
+                            <input type="text" name="jacket" class="form-control" value="42" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Shoe</label>
+                            <input type="text" name="shoe" class="form-control" value="10" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Inseam</label>
+                            <input type="text" name="inseam" class="form-control" value="32" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- Payroll Information -->
+                    <h6 class="section-title mb-3">Payroll Information</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-2">
+                            <label class="form-label">Guard Rate</label>
+                            <input type="number" step="0.01" name="guard_rate" class="form-control" value="15.50" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Payment Period</label>
+                            <select class="form-control" name="payment_period" disabled>
+                                <option value="Fortnightly" selected>Fortnightly</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Fixed Pay (if any)</label>
+                            <input type="number" step="0.01" name="fixed_pay" class="form-control" value="0.00" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Bank Account Name</label>
+                            <input type="text" name="account_name" class="form-control" value="Mr John Smith" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Bank Account Number</label>
+                            <input type="text" name="account_number" class="form-control" value="12345678" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Bank Sort Code</label>
+                            <input type="text" name="sort_code" class="form-control" value="12-34-56" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Bank Name</label>
+                            <input type="text" name="bank_name" class="form-control" value="Barclays Bank" readonly>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Bank Branch</label>
+                            <input type="text" name="bank_branch" class="form-control" value="London Baker Street" readonly>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <label class="form-label">Other Information</label>
+                            <textarea name="other_info" class="form-control" rows="3" readonly>Shift supervisor with 5 years experience. Trained in first aid and conflict resolution.</textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Fields -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                            <label class="form-label">Tags</label>
+                            <textarea name="tags" class="form-control" rows="2" readonly>QA54ER, Supervisor, FirstAid, CCTV</textarea>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label">Address Group</label>
+                            <select class="form-control" name="address_group" disabled>
+                                <option value="group_a" selected>Group A - Central London</option>
+                                <option value="">-- Choose --</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Employee Holidays Section -->
+                    <h6 class="section-title mb-3">Employee Holidays (2024)</h6>
+                    <div id="holidayRows" class="mb-3">
+                        <div class="row g-3 mb-2">
+                            <div class="col-md-3">
+                                <label class="form-label">Start Date</label>
+                                <input type="text" class="form-control" value="15/07/2024" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">End Date</label>
+                                <input type="text" class="form-control" value="22/07/2024" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Days Taken</label>
+                                <input type="number" class="form-control" value="5" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Type</label>
+                                <input type="text" class="form-control" value="Annual Leave" readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" value="25/12/2024" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" value="26/12/2024" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="number" class="form-control" value="2" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" value="Bank Holiday" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-primary small ">
+                        <strong>Total Annual Leave Remaining:</strong> 18 days
+                    </div>
+                    
+                </form>
             </div>
-
+            
+            <!-- Modal Footer -->
             <div class="modal-footer">
-                <button class="button light" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="button light" data-bs-dismiss="modal">Close</button>
+             
             </div>
-
+            
         </div>
     </div>
 </div>
+
+
+
 
 
 <!-- Sucess Modal -->

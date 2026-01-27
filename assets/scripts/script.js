@@ -258,6 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
         locations.forEach(loc => bounds.extend([loc.lng, loc.lat]));
         map.fitBounds(bounds, { padding: 100 }); // padding ensures markers not at edges
     }
+   
+    
 })
 
     /* =====================================================
@@ -437,18 +439,27 @@ document.addEventListener('shown.bs.modal', function (e) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    flatpickr('.fp-time', {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: 'H:i',  
-        time_24hr: true
-    });
+    if (typeof flatpickr !== 'undefined') {
+        flatpickr('.flatpickr', {
+            dateFormat: 'd/m/Y',
+            allowInput: false,
+            placeholder: 'Click to enter date'
+        });
+
+        flatpickr('.fp-time', {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: 'H:i',
+            time_24hr: true,
+            allowInput: false,
+            placeholder: 'Click to enter time'
+        });
+    }
 });
 
+
 document.addEventListener('DOMContentLoaded', function () {
-    flatpickr('.flatpickr', {
-        dateFormat: 'd/m/Y'
-    });
+
 
     document.querySelectorAll('.dropdown-toggle').forEach(function (el) {
         new bootstrap.Dropdown(el, {
@@ -480,5 +491,22 @@ document.addEventListener('DOMContentLoaded', function () {
             container: 'body'
         });
     });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('mapShiftRotaDetail');
+    if (!el || !window.maplibregl) return;
+
+    const map = new maplibregl.Map({
+        container: el,
+        style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=B0yAfO4jhSsrR2kTOdds',
+        center: [-0.1276, 51.5074],
+        zoom: 14
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+    map.on('load', () => map.resize());
 });
 

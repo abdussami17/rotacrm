@@ -1,0 +1,33 @@
+.profile-img img{
+    height: 100px;
+    width: auto;
+    max-width: 120px;
+    border-radius: 12px;
+}
+.profile-img{
+    display: flex;
+    justify-content: normal;
+    gap: 10px;
+}
+.profile-img svg{
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+.profile-img .social-icons svg{
+    height: 12px;
+    width: 12px;
+}
+.profile-img .social-icons span{
+    font-size:12px
+}
+.shfit_rota_details_names small{
+    font-size: 12px;
+}
+.shfit_rota_details_names label{
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.card-body{
+    padding: 0;
+}

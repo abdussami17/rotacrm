@@ -113,7 +113,7 @@
                         <i data-lucide="calendar-clock" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">Scheduling</span>
                     </a>
-                    <a href="worker-calendar.html" class="section-item" role="menuitem">
+                    <a href="security-staff-calendar.html" class="section-item" role="menuitem">
                         <i data-lucide="calendar-plus" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">Worker Calendar</span>
                     </a>
@@ -135,13 +135,13 @@
             <!-- HR Management Section -->
             <section class="sidebar-section" aria-labelledby="hr-management-heading">
                 <h3 id="hr-management-heading" class="sidebar-section-title">
-                    <button class="section-toggle" aria-expanded="false" aria-controls="hr-management-items">
+                    <button class="section-toggle" aria-expanded="true" aria-controls="hr-management-items">
                         <i class="fas fa-chevron-down section-chevron" id="hr-management-chevron"></i>
                         <span>HR Management</span>
                     </button>
                 </h3>
                 <div class="section-items" id="hr-management-items" role="menu" aria-labelledby="hr-management-heading">
-                    <a href="hr.html" class="section-item" role="menuitem">
+                    <a href="hr.html" class="section-item active" role="menuitem">
                         <i data-lucide="users" class="section-item-icon" aria-hidden="true"></i>
                         <span class="menu-item-label">HR</span>
                     </a>
@@ -609,60 +609,59 @@
     </div>
 </div>
 
-<!-- View Material Detail Modal -->
-<div class="modal fade" id="viewMaterialModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+<!-- View Material Modal -->
+<div class="modal fade" id="viewMaterialModal" tabindex="-1" aria-labelledby="viewMaterialModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title">Material Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="viewMaterialModalLabel">View Material Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <div class="row g-3">
+                <form id="viewMaterialForm">
 
-                    <div class="col-md-12">
-                        <div class="detail-item">
-                            <span class="detail-label">Description</span>
-                            <span class="detail-value">Test</span>
+                    <!-- Material Information -->
+                    <h6 class="section-title">Material Details</h6>
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" value="Safety Guidelines" readonly>
                         </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" readonly>Comprehensive safety instructions for staff.</textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Material Type</label>
+                            <input type="text" class="form-control" value="Document" readonly>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Uploaded File</label>
+                            <input type="text" class="form-control" value="safety_guidelines.pdf" readonly>
+                        </div>
+
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Type</span>
-                            <span class="detail-value">general_guidelines</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="detail-item">
-                            <span class="detail-label">Acknowledge By Date</span>
-                            <span class="detail-value">2025-11-19</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="detail-item">
-                            <span class="detail-label">File</span>
-                            <span class="detail-value">—</span>
-                        </div>
-                    </div>
-
-                </div>
+                </form>
             </div>
 
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button class="button light" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="button light" data-bs-dismiss="modal">Close</button>
             </div>
 
         </div>
     </div>
 </div>
+
 
 
 <!-- Sucess Modal -->
