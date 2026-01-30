@@ -37,12 +37,13 @@
     --table-primary: rgb(35, 36, 41);
     
     /* Buttons */
-    --btn-primary: rgb(35, 36, 41);
+    --btn-primary:#f76f00;
     --btn-light: #fff;
+    --btn-light-modal:#F7F8F9;
     --btn-light-hover: rgb(223.535, 224.44, 225.345);
     --btn-danger: #c53030;
     --btn-danger-hover: #c53030;
-    --btn-primary-hover:#343a40;
+    --btn-primary-hover:#dc6300;
     
     /* Layout */
     --sidebar-width: 250px;
@@ -851,7 +852,9 @@ will-change: background-color, border-color, color, transform;
 .button.light {
     background: var(--btn-light);
 }
-
+.modal-footer .button.light{
+    background: var(--btn-light-modal);
+}
 .button.light:hover,
 .button.light:active,
 .button.light:focus {
